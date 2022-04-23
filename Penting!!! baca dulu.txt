@@ -1,0 +1,20 @@
+===============Konfigurasi nama url=========================
+jika merubah nama folder utama "surat_wira" menjadi nama lain maka,
+ubah di application/config.php
+
+$config['base_url'] = 'http://localhost/surat_wira/';
+ganti yang "surat_wira" dengan nama folder baru kamu
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+==============Konfigurasi Database============================= 
+ubah di application/database.php
+
+ubah bagian ini sesuai dengan konfigurasi mysql mu
+
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'surat_wira',
+
+===============================================================
