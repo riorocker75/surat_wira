@@ -1525,6 +1525,70 @@ function surat_datang(){
 		}
 
 
+/*
+|---------------------------------
+|	Bagian cetak surat
+|----------------------------------
+*/
+
+		function surat_masuk_cetak(){
+			$this->load->database();
+			$data['data']=$this->m_dah->get_year('surat_masuk','tgl_masuk')->result();
+
+			$this->load->view('admin/cetak/cetak_surat_masuk',$data);
+
+		}
+
+		function surat_keluar_cetak(){
+			$this->load->database();
+			$data['data']=$this->m_dah->get_year('surat_keluar','tgl_keluar')->result();
+
+			$this->load->view('admin/cetak/cetak_surat_keluar',$data);
+
+		}
+
+		function surat_ket_cetak(){
+			$this->load->database();
+			$data['data']=$this->m_dah->get_year('surat_ket','tanggal')->result();
+
+			$this->load->view('admin/cetak/cetak_surat_ket',$data);
+
+		}
+
+
+		function surat_sengketa_cetak(){
+			$this->load->database();
+			$data['data']=$this->m_dah->get_year('surat_sengketa','tanggal')->result();
+
+			$this->load->view('admin/cetak/cetak_surat_sengketa',$data);
+
+		}
+
+		function surat_mati_cetak(){
+			$this->load->database();
+			$data['data']=$this->m_dah->get_year('surat_mati','tanggal')->result();
+
+			$this->load->view('admin/cetak/cetak_surat_mati',$data);
+
+		}
+
+		function surat_pindah_cetak(){
+			$this->load->database();
+			$data['data']=$this->m_dah->get_year('surat_pindah','tanggal')->result();
+
+			$this->load->view('admin/cetak/cetak_surat_pindah',$data);
+
+		}
+		
+		function surat_datang_cetak(){
+			$this->load->database();
+			$data['data']=$this->m_dah->get_year('surat_datang','tanggal')->result();
+
+			$this->load->view('admin/cetak/cetak_surat_datang',$data);
+
+		}
+
+
 
 
 /*
@@ -2135,38 +2199,6 @@ function hapus_foto_dev(){
 			);
 		$this->m_dah->update_data($where,$update,'dah_options');
 }
-/*
-|---------------------------------
-|	Bagian Pelayanan Surat
-|----------------------------------
-*/
-function pelayanan_surat(){
-	$this->load->database();
-	// $this->db->group_by('nomor_kk');
-	// $data['total']= $this->db->count_all('penduduk');
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_pelayanan_surat',$data);
-	$this->load->view('admin/v_footer');
-
-}
-
-function pelayanan_surat_edit(){
-	$this->load->database();
-
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_pelayanan_surat_edit');
-	$this->load->view('admin/v_footer');
-
-}
-
-function pelayanan_surat_update(){
-	$this->load->database();
-	$surat=$this->input->post('surat');
-	$this->m_dah->update_data(array('option_name' => 'pelayanan_surat'),array('option_value' => $surat),'dah_options');
-
-	redirect(base_url().'admin/pelayanan_surat/?alert=update');
-
-}
 
 
 
@@ -2183,88 +2215,7 @@ function pelayanan_surat_update(){
 |----------------------------------
 */
 
-function sesi_surat(){
-	$this->load->database();
-	$id_penduduk=$this->session->userdata('penduduk_id');
-	$data['surat']=$this->m_dah->get_data('jenis_surat')->result();	
-	
-	$data['surat_review']=$this->m_dah->pilih_surat($id_penduduk,'review','surat_mohon')->result();
-	$data['surat_tolak']=$this->m_dah->pilih_surat($id_penduduk,'ditolak','surat_mohon')->result();
-	$data['surat_terima']=$this->m_dah->pilih_surat($id_penduduk,'diterima','surat_mohon')->result();
-	
-	$data['total_terima']=$this->m_dah->pilih_surat($id_penduduk,'diterima','surat_mohon')->num_rows();
-	$data['total_tolak']=$this->m_dah->pilih_surat($id_penduduk,'ditolak','surat_mohon')->num_rows();
-	$data['total_review']=$this->m_dah->pilih_surat($id_penduduk,'review','surat_mohon')->num_rows();
-	
 
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/sesi_surat/surat_data',$data);
-	$this->load->view('admin/v_footer');
-
-}
-
-
-/*
-|---------------------------------
-|	Bagian Pelayanan Surat
-|----------------------------------
-*/
-
-function permohonan_surat(){
-	$this->load->database();
-	if($this->session->userdata('level') != "admin"){
-			redirect(base_url());
-	}
-
-	$data['surat_lain']=$this->m_dah->get_surat_lain_order('review')->result();
-
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_pengajuan_surat',$data);
-	$this->load->view('admin/v_footer');
-
-}
-
-function arsip_surat(){
-	$this->load->database();
-	if($this->session->userdata('level') != "admin"){
-			redirect(base_url());
-	}
-	
-	$data['surat_lain_terima']=$this->m_dah->get_surat_lain_order('diterima')->result();
-	$data['surat_lain_tolak']=$this->m_dah->get_surat_lain_order('ditolak')->result();
-
-	$data['surat_lain_total_terima']=$this->m_dah->get_surat_lain_order('diterima')->num_rows();
-	$data['surat_lain_total_tolak']=$this->m_dah->get_surat_lain_order('ditolak')->num_rows();
-	
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_arsip_surat',$data);
-	$this->load->view('admin/v_footer');
-}
-
-function arsip_surat_lurah(){
-	$this->load->database();
-	if($this->session->userdata('level') != "lurah"){
-			redirect(base_url());
-	}
-	$wh=array(
-		'status_surat' => "review"
-	);
-	
-	$data['surat_lain_terima']=$this->m_dah->get_surat_lain_order('diterima')->result();
-	$data['surat_lain_tolak']=$this->m_dah->get_surat_lain_order('ditolak')->result();
-
-	$data['surat_lain_total_terima']=$this->m_dah->get_surat_lain_order('diterima')->num_rows();
-	$data['surat_lain_total_tolak']=$this->m_dah->get_surat_lain_order('ditolak')->num_rows();
-	
-	
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_arsip_surat_lurah',$data);
-	$this->load->view('admin/v_footer');
-}
-/*--------------------------
-| update status surat
-----------------------------*/
-	
 /*--------------------------
 | Bagian untuk Preview file bisa pdf dan gambar
 ----------------------------*/
@@ -2285,323 +2236,5 @@ function viewfile_pdf($id){
 }
 	
 
-/*--------------------------
-|  Buat Penambahan Surat
-----------------------------*/
-
-	function data_surat(){
-		$this->load->database();
-		if($this->session->userdata('level') != "admin"){
-				redirect(base_url());
-			}
-
-		$data['surat']=$this->m_dah->get_data('jenis_surat')->result();
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/tambah_surat/v_data_surat',$data);
-		$this->load->view('admin/v_footer');
-	}
-
-	function tambah_surat(){
-		$this->load->database();
-		if($this->session->userdata('level') != "admin"){
-				redirect(base_url().'admin/data_surat');
-			}
-
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/tambah_surat/v_tambah_surat');
-		$this->load->view('admin/v_footer');
-	}
-
-
-	function tambah_surat_act(){
-		$this->load->database();
-		if($this->session->userdata('level') != "admin"){
-				redirect(base_url());
-			}
-		$nama = $this->input->post('nama');
-		$kode = $this->input->post('kode');
-		$syarat = $this->input->post('syarat');
-		$format = $this->input->post('format');
-
-
-		$this->form_validation->set_rules('nama','Nama','required');
-		$this->form_validation->set_rules('kode','Kode','required');
-		
-
-		if($this->form_validation->run() != true){
-			redirect('admin/tambah_surat');
-		}else{
-			$data= array(
-				'nama_surat' => $nama,
-				'kode_surat' => $kode,
-				'syarat_surat' => $syarat,
-				'format_surat' =>$format
-			);
-			$this->m_dah->insert_data($data,'jenis_surat');
-			redirect(base_url().'admin/data_surat/?alert=tambah');
-		}
-		
-	}
-
-
-	function tambah_surat_edit($id){
-		$this->load->database();
-		if($this->session->userdata('level') != "admin"){redirect(base_url());}
-		
-		if($id == ""){
-			redirect('admin/data_surat');
-		}else{			
-			$where = array(
-				'id' => $id
-				);	
-			$data['surat'] = $this->m_dah->edit_data($where,'jenis_surat')->result();
-			if(count($data['surat']) > 0){
-				$this->load->view('admin/v_header');
-				$this->load->view('admin/tambah_surat/v_edit_surat',$data);
-				$this->load->view('admin/v_footer');				
-			}else{
-				redirect(base_url().'admin/data_surat');				
-			}
-		}
-		
-	}
-
-	function tambah_surat_update(){
-		if($this->session->userdata('level') != "admin"){redirect(base_url());}
-
-		$this->load->database();		
-		$id = $this->input->post('id');
-		$nama = $this->input->post('nama');
-		$kode = $this->input->post('kode');
-		$syarat = $this->input->post('syarat');
-		$format = $this->input->post('format');
-
-		$this->form_validation->set_rules('nama','Nama','required');
-		$this->form_validation->set_rules('kode','Kode','required');
-
-		if($this->form_validation->run() != true){
-			redirect('admin/tambah_surat_edit/'.$id);
-		}else{
-			$where=array(
-				'id' => $id
-			);
-			$data= array(
-				'nama_surat' => $nama,
-				'kode_surat' => $kode,
-				'syarat_surat' => $syarat,
-				'format_surat' =>$format
-			);
-			$this->m_dah->update_data($where,$data,'jenis_surat');			
-			redirect(base_url().'admin/data_surat/?alert=update');
-			
-			// redirect(base_url().'admin/tambah_surat_edit/'.$id.'/?alert=update');
-		}
-		
-
-	}
-
-
-		function tambah_surat_hapus($id){
-		$this->load->database();
-		if($this->session->userdata('level') != "admin"){redirect(base_url());}
-			if($id == ""){
-				redirect('base_url()');
-			}else{
-				$where = array(
-				'id' => $id
-				);
-			}	
-			$this->m_dah->delete_data($where,'jenis_surat');
-			redirect(base_url().'admin/data_surat/?alert=post-delete');
-	}
-	// end tambah surat
-
-	// update surat lain review
-
-	function update_surat_lain($id){
-		if($this->session->userdata('level') != "admin"){
-			redirect(base_url());
-		}
-		$this->load->database();
-
-		$where=array(
-			'surat_mohon_id' =>	$id
-		);
-
-		$data['surat']=$this->m_dah->edit_data($where,'surat_mohon')->result();
-		
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/review/rv_surat_lain',$data);
-		$this->load->view('admin/v_footer');
-	}
-
-	function update_surat_lain_act(){
-		if($this->session->userdata('level') != "admin"){
-			redirect(base_url());
-		}
-		$this->load->database();
-
-		$surat_id= $this->input->post('surat_id');
-
-        $where_s=array(
-            'surat_mohon_id' => $surat_id
-        );
-
-        $ket_s= $this->input->post('ket_surat');
-        $no_surat=$this->input->post('no_surat');
-        $format= $this->input->post('format');
-
-        
-        if($this->input->post('tolak') != ""){
-            $this->form_validation->set_rules('ket_surat','Keterangan diisi dengan alasan mengapa menolak permohonan', 'required');
-
-            if($this->form_validation->run() != true){
-                redirect('admin/update_surat_lain/'.$surat_id);
-            }else{
-             
-                $data_surat=array(
-                    'status_surat' => "ditolak",
-                    'info' =>$ket_s,
-                    'notif' => 2
-
-                );
-                $this->m_dah->update_data($where_s,$data_surat,'surat_mohon');
-                redirect(base_url().'admin/permohonan_surat/?alert=update');
-            }
-        }
-
-        if($this->input->post('setuju') != ""){
-            $this->form_validation->set_rules('surat_id','Surat Id wajib ada', 'required');
-            $this->form_validation->set_rules('no_surat','Nomor surat Wajib ada!!', 'required');
-            if($this->form_validation->run() != true){
-                redirect('admin/update_surat_lain/'.$surat_id);
-         
-            }else{
-         
-                $data_lain=array(
-                    'nomor_surat' => $no_surat,
-                    'tgl_surat' => date('Y-m-d'),
-                    'info' => $ket_s,
-                    'format_surat' => $format,
-                    'notif' => 2,
-                    'status_surat' => "diterima"
-                );
-               
-                $this->m_dah->update_data($where_s,$data_lain,'surat_mohon');
-                redirect(base_url().'admin/permohonan_surat/?alert=update');
-                
-            }
-        }
-
-
-	}	
-
-		function delete_surat_lain($id){
-		if($this->session->userdata('level') != "admin"){
-			redirect(base_url());
-			}
-				$this->load->database();
-			if($id == ""){
-				redirect('base_url()');
-			}else{
-				$where = array(
-				'surat_mohon_id' => $id
-				);
-
-			$data = $this->m_dah->edit_data($where,'surat_mohon')->row();
-			// hapus di direktori upload/syarat
-
-			@chmod("./upload/syarat/" . $data->upload, 0777);
-			@unlink('./upload/syarat/' . $data->upload);
-
-			// hapus di table 
-			$this->m_dah->delete_data($where,'surat_mohon');
-			//  hapus tabel surat_mohon
-
-			redirect('admin/arsip_surat/?alert=post-delete');
-		}
-      }
-
-
-// pengturan format surat
-  function atur_surat(){
-  	if($this->session->userdata('level') != "admin"){
-			redirect(base_url());
-	}
-   $this->load->database();
-
-  
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/tambah_surat/v_atur_surat',$data);
-	$this->load->view('admin/v_footer');
-
-  }    
-
-
-  function atur_surat_update(){
-	if($this->session->userdata('level') != "admin"){
-			redirect(base_url());
-	}
-   $this->load->database();
-
-   $jab_surat=$this->input->post('jab_surat');
-   $pj_surat=$this->input->post('pj_surat');
-   $nama_desa=$this->input->post('nama_desa');
-   $logo_surat=$this->input->post('logo_surat');
-   $kop_surat=$this->input->post('kop_surat');
-   $kode_surat=$this->input->post('kode_surat');
-	
-
-		$config['upload_path'] = './upload/logo/';
-		$config['allowed_types'] = 'jpg|png|jpeg';
-		$foto = "foto_dev";
-		if($_FILES["logo_surat"]["name"]){
-			$rand1=rand(1000,9999);
-			$config['file_name'] = $rand1.'_'.$_FILES['logo_surat']['name'];				
-			$this->load->library('upload', $config);
-			$logo_surat = $this->upload->do_upload('logo_surat');
-			if (!$logo_surat){
-				$error = array('error' => $this->upload->display_errors());
-			}else{
-				$logo_surat = $this->upload->data("file_name");
-				$data = array('upload_data' => $this->upload->data());
-				$this->m_dah->update_data(array('option_name' => 'logo_surat'),array('option_value' => $logo_surat),'dah_options');			
-			}
-		
-		}
-
-	$this->m_dah->update_data(array('option_name' => 'kop_surat'),array('option_value' => $kop_surat),'dah_options');
-	$this->m_dah->update_data(array('option_name' => 'kode_surat'),array('option_value' => $kode_surat),'dah_options');
-	$this->m_dah->update_data(array('option_name' => 'nama_desa'),array('option_value' => $nama_desa),'dah_options');
-	$this->m_dah->update_data(array('option_name' => 'pj_surat'),array('option_value' => $pj_surat),'dah_options');
-	$this->m_dah->update_data(array('option_name' => 'jab_surat'),array('option_value' => $jab_surat),'dah_options');
-
-	redirect(base_url().'admin/atur_surat/?alert=update');
-
-
-
-
-  }
-
-
-  // hapus logo surat
-
-  function hapus_logo_surat(){
-	$this->load->database();
-		$id = $this->input->post('id');
-		$where = array(
-			'option_id' => $id
-			);
-		$data = $this->m_dah->edit_data($where,'dah_options')->row();
-		@chmod("./upload/logo/" . $data->option_value, 0777);
-		@unlink('./upload/logo/' . $data->option_value);
-
-		$update = array(
-			'option_value' => ""
-			);
-		$this->m_dah->update_data($where,$update,'dah_options');
-}
-
-// end braket file admin.php
     
 }

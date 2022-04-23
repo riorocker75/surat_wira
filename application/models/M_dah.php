@@ -33,6 +33,16 @@ class M_dah extends CI_Model{
 		return $this->db->get($table);
 	}
 
+	// function get_year($row,$startDate,$table){
+	// 	$y=date('Y');
+	// 	$this->db->where("$row BETWEEN '{$startDate}' AND '{$y}'");
+	// 	return $this->db->get($table);
+	// }
+
+	function get_year($table,$row){
+		return $this->db->query("SELECT * FROM $table WHERE year($row) = YEAR(now())");
+	}
+
 	function get_data_desc($id,$table){
 		$this->db->order_by($id, 'asc');
 		return $this->db->get($table);
