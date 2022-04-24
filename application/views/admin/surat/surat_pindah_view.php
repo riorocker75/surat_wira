@@ -8,7 +8,7 @@
 
 		<!-- Content Row -->
 		<div class="row">
-            <div class="col-lg-12 mb-4">
+            <div class="col-lg-6 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Surat Pindah</h6>
@@ -17,81 +17,65 @@
                         <?php foreach($data as $dt){?>
                     <!-- <form action="<?php echo base_url().'admin/surat_pindah_update'?>" method="post" enctype='multipart/form-data'> -->
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 
+                             <table class="table">
 
-                                <div class="form-group">
-                                    <label for="">Nomor Surat</label>
-                                    <input type="text" class="form-control form-control-user" name="no_surat" value="<?php echo $dt->no_surat?>" disabled>
-                                     <?php echo form_error('no_surat', '<div class="form-error">', '</div>'); ?>
+                                 <tr>
+                                    <td>Nomor Surat</td>
+                                    <td><?php echo $dt->no_surat?></td>
+                                </tr>
 
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Tanggal</label>
-                                    <input type="date" class="form-control form-control-user" name="tanggal" value="<?php echo date("Y-m-d", strtotime($dt->tanggal));?>" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Anggota keluarga yang pindah</label>
-                                    <input type="text" class="form-control form-control-user" name="nama_pindah" value="<?php echo $dt->nama_pindah?>" disabled>
-                                     <?php echo form_error('nama_pindah', '<div class="form-error">', '</div>'); ?>
-                                </div>
-                                 <div class="form-group">
-                                    <label for="">Nomor Kartu Keluarga</label>
-                                    <input type="number" class="form-control form-control-user" name="no_kk" value="<?php echo $dt->no_kk?>" disabled>
-                                     <?php echo form_error('no_kk', '<div class="form-error">', '</div>'); ?>
+                                <tr>
+                                    <td>Tanggal Surat</td>
+                                    <td>
+                                        <?php echo date('Y-m-d',strtotime($dt->tanggal))?>
+                                    </td>
+                                </tr>
 
-                                </div>
+                                 <tr>
+                                    <td>Anggota Keluarga yang pindah</td>
+                                    <td><?php echo $dt->nama_pindah?></td>
+                                </tr>
 
-                                <div class="form-group">
-                                    <label for="">Nomor Induk Kependudukan</label>
-                                    <input type="number" class="form-control form-control-user" name="nik" value="<?php echo $dt->nik?>" disabled>
-                                     <?php echo form_error('nik', '<div class="form-error">', '</div>'); ?>
+                                <tr>
+                                    <td>Nomor Kartu Keluarga</td>
+                                    <td><?php echo $dt->no_kk?></td>
+                                </tr>
 
-                                </div>
+                                <tr>
+                                    <td>Nomor Induk Kependudukan</td>
+                                    <td><?php echo $dt->nik?></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Daerah tujuan (Desa)</td>
+                                    <td><?php echo $dt->daerah_tujuan?></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Kecamatan</td>
+                                    <td><?php echo $dt->kecamatan?></td>
+                                </tr>
+
+                                 <tr>
+                                    <td>Kabupaten</td>
+                                    <td><?php echo $dt->kabupaten?></td>
+                                </tr>
+
+                                 <tr>
+                                    <td>Provinsi</td>
+                                    <td><?php echo $dt->provinsi?></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?php $this->m_dah->preview_file($dt->lampiran)?>
+                                    </td>
+                                </tr>
+
+                                 </table>
+
                                
-                            
-
-                                
-                            </div>
-
-                            <div class="col-lg-6">
-                
-
-                                <div class="form-group">
-                                    <label for="">Daerah Tujuan (Desa)</label>
-                                    <input type="text" class="form-control form-control-user" name="daerah_tujuan" value="<?php echo $dt->daerah_tujuan?>" disabled>
-                                     <?php echo form_error('daerah_tujuan', '<div class="form-error">', '</div>'); ?>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Kecamatan</label>
-                                    <input type="text" class="form-control form-control-user" name="kecamatan" value="<?php echo $dt->kecamatan?>" disabled>
-                                     <?php echo form_error('kecamatan', '<div class="form-error">', '</div>'); ?>
-
-                                </div>
-                                 <div class="form-group">
-                                    <label for="">Kabupaten</label>
-                                    <input type="text" class="form-control form-control-user" name="kabupaten" value="<?php echo $dt->kabupaten?>" disabled>
-                                     <?php echo form_error('kabupaten', '<div class="form-error">', '</div>'); ?>
-
-                                </div>
-
-                                 <div class="form-group">
-                                    <label for="">Provinsi</label>
-                                    <input type="text" class="form-control form-control-user" name="provinsi" value="<?php echo $dt->provinsi?>" disabled>
-                                     <?php echo form_error('provinsi', '<div class="form-error">', '</div>'); ?>
-
-                                </div>
-
-                                    <div class="form-group">
-                                    <label for="">Lampiran</label><br>
-                                    <?php echo $this->m_dah->preview_file($dt->lampiran)?>
-
-                                    <!-- <input type="file" class="form-control form-control-user" name="lampiran" > -->
-                                     <!-- <?php echo form_error('lampiran', '<div class="form-error">', '</div>'); ?> -->
-
-                                </div>
                               
                             </div>
                            <!-- end row form -->

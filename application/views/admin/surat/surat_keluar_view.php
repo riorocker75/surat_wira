@@ -7,7 +7,7 @@
 
 		<!-- Content Row -->
 		<div class="row">
-            <div class="col-lg-12 mb-4">
+            <div class="col-lg-6 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Detail Surat Keluar</h6>
@@ -15,46 +15,46 @@
                     <div class="card-body">
                         <?php foreach($data as $dt){?>
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="">Pengirim</label>
-                                    <input type="text" class="form-control form-control-user" value="<?php echo $dt->pengirim?>" disabled>
-                                     <?php echo form_error('pengirim', '<div class="form-error">', '</div>'); ?>
-                                </div>
+                            <div class="col-lg-12">
+                                <table class="table">
+                                <tr>
+                                    <td>Pengirim</td>
+                                    <td><?php echo $dt->pengirim?></td>
+                                </tr>
 
-                                <div class="form-group">
-                                    <label for="">Nomor Surat</label>
-                                    <input type="text" class="form-control form-control-user" value="<?php echo $dt->no_surat?>" disabled >
-                                     <?php echo form_error('no_surat', '<div class="form-error">', '</div>'); ?>
+                                 <tr>
+                                    <td>Nomor Surat</td>
+                                    <td><?php echo $dt->no_surat?></td>
+                                </tr>
+                                 <tr>
+                                    <td>Isi Ringkas</td>
+                                    <td><?php echo $dt->deskripsi?></td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Surat</td>
+                                    <td>
+                                        <?php echo date('Y-m-d',strtotime($dt->tgl_surat))?>
+                                    </td>
+                                </tr>
 
-                                </div>
+                                <tr>
+                                    <td>Tanggal Keluar</td>
+                                    <td>
 
-                                    <div class="form-group">
-                                    <label for="">Isi Ringkas</label>
-                                    <textarea name="deskripsi"  cols="30" rows="10" class="form-control form-control-user" disabled><?php echo $dt->deskripsi?></textarea>
-                                     <?php echo form_error('deskripsi', '<div class="form-error">', '</div>'); ?>
+                                        <?php echo date('Y-m-d',strtotime($dt->tgl_keluar))?>
+                                    </td>
 
-                                </div>
-                            
+                                </tr>
 
-                                
-                            </div>
+                                <tr>
+                                    <td>
+                                        <?php $this->m_dah->preview_file($dt->lampiran)?>
 
-                            <div class="col-lg-6">
-                                       <div class="form-group">
-                                    <label for="">Tanggal Surat</label>
-                                    <input type="date" class="form-control form-control-user" name="tgl_surat" value="<?php echo date('Y-m-d',strtotime($dt->tgl_surat))?>" disabled>
-                                </div>
+                                    </td>
+                                </tr>
 
-                                       <div class="form-group">
-                                    <label for="">Tanggal Keluar</label>
-                                    <input type="date" class="form-control form-control-user"value="<?php echo date('Y-m-d',strtotime($dt->tgl_keluar))?>" disabled>
-                                </div>
 
-                                    <div class="form-group">
-                                    <label for="">Lampiran</label><br>
-                                   <?php $this->m_dah->preview_file($dt->lampiran)?>
-                                </div>
+                            </table>
                               
                             </div>
                            <!-- end row form -->

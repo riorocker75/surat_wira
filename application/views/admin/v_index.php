@@ -23,6 +23,10 @@
 						<div class="text-white-50">Jumlah Surat Masuk</div>
 						</div>
 					</div>
+
+					<div style="position:absolute;bottom:5px;right:10px">
+						<a href="<?php echo base_url().'admin/surat_masuk'?>" class="text-white-50" style="text-decoration:none;">Selengkapnya <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+					</div>
 				
 				</div>
 			</div>
@@ -41,6 +45,9 @@
 						<?php echo $this->m_dah->tot_surat_keluar(1)->num_rows(); ?> Surat Keluar
 						<div class="text-white-50">Jumlah Surat Keluar</div>
 						</div>
+					</div>
+					<div style="position:absolute;bottom:5px;right:10px">
+						<a href="<?php echo base_url().'admin/surat_keluar'?>" class="text-white-50" style="text-decoration:none;">Selengkapnya <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 					</div>
 				
 				</div>
