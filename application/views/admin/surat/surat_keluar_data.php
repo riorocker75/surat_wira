@@ -34,6 +34,8 @@
           <div class="float-right">
             <?php if ($this->session->userdata('level') == "admin") { ?>
               <a href="<?php echo base_url().'admin/surat_keluar_add' ?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-user-plus" aria-hidden="true"></i> Tambah Surat keluar</a>
+              <a href="<?php echo base_url().'admin/surat_keluar_cetak' ?>" class="d-sm-inline-block btn btn-sm btn-default shadow-sm"><i class="fa fa-print" aria-hidden="true"></i> Print</a>
+
             <?php } else {
             } ?>
           </div>
