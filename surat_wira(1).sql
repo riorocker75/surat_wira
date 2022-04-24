@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2022 at 07:15 PM
+-- Generation Time: Apr 24, 2022 at 07:32 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -62,11 +62,9 @@ CREATE TABLE `dah_options` (
 --
 
 INSERT INTO `dah_options` (`option_id`, `option_name`, `option_value`) VALUES
-(1, 'blog_name', 'Administrasi Desa'),
-(2, 'blog_description', 'Sebuah Aplikasi Untuk Mendata Penduduk Serta Melayani Jenis Surat                     '),
+(1, 'blog_name', 'Sistem Arsip Kantor Desa Kebun Balok'),
+(2, 'blog_description', 'Sebuah Aplikasi Arsip  '),
 (3, 'blog_logo', '884488349_logoutu1.png'),
-(7, 'widget_social_facebook', 'https://www.facebook.com/malasngodingpage'),
-(10, 'widget_social_instagram', 'https://www.instagram.com/malasngoding/'),
 (12, 'blog_welcome', ''),
 (13, 'struktur', '<table border=\"0\" cellpadding=\"4\" cellspacing=\"2\">\r\n	<tbody>\r\n		<tr>\r\n			<td>Kepala Desa&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>\r\n			<td>Nasrul Fadhil, ST</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Sekretaris&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>\r\n			<td>Abdullah, SE</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Tuha 8&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</td>\r\n			<td>Tgk Halim, S.Pd</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Bendahara&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>\r\n			<td>Abdullah, S.Sos</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Tuha 4&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</td>\r\n			<td>1. Tarmizi,&nbsp; S.Pd</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>2. Syarifuddin&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>3. Fakri</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>4. Khalil</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>5. Iskandar</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>6. Idris</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>7. Zainabon</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Kaur Pemerintahan&nbsp; &nbsp; &nbsp;&nbsp;</td>\r\n			<td>Abdul Bahri</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Kaur Pembangunan&nbsp; &nbsp; &nbsp;&nbsp;</td>\r\n			<td>Saifunnur</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Kaur Kesra&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>\r\n			<td>Tgk Rasyidi.Y</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Kadus Bak Buloh&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</td>\r\n			<td>Muhammad</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Kadus Tgk Di kulam&nbsp; &nbsp; &nbsp;&nbsp;</td>\r\n			<td>Tarmizi.B</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Kadus Lampoh Kubu&nbsp; &nbsp; &nbsp;&nbsp;</td>\r\n			<td>Muhammad Rizal, S.Pd</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
 (14, 'pengembang', '<table border=\"0\" cellpadding=\"4\" cellspacing=\"2\">\r\n	<tbody>\r\n		<tr>\r\n			<td><strong>Nama&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></td>\r\n			<td>: Muhammad Ichsan</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>NIM</strong></td>\r\n			<td>: 1657301062</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Tempat Lahir</strong></td>\r\n			<td>: Ulee Cibrek</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Tanggal Lahir</strong></td>\r\n			<td>: 11 Agustus 1998</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Alamat</strong></td>\r\n			<td>: Desa Ulee Ceubrek</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Nomor HP</strong></td>\r\n			<td>: 0822-7924-8267</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Email</strong></td>\r\n			<td>: ichsanaifaichravaro1998@gmail.com</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Prodi</strong></td>\r\n			<td>: Teknik Informatika</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Jurusan</strong></td>\r\n			<td>: Teknologi Informasi dan Komputer</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Kampus</strong></td>\r\n			<td>: Politeknik Negeri Lhokseumawe</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Judul TGA</strong></td>\r\n			<td>: Sistem Informasi Pelayanan Administrasi Kependudukan Berbasis Web</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>&nbsp; ( Studi Kasus : Desa Ulee Ceubrek Kecamatan Meurah Mulia Kabupaten</td>\r\n		</tr>\r\n		<tr>\r\n			<td>&nbsp;</td>\r\n			<td>&nbsp; Aceh Utara )</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
@@ -74,12 +72,7 @@ INSERT INTO `dah_options` (`option_id`, `option_name`, `option_value`) VALUES
 (16, 'nama_desa', 'Banyuasin'),
 (17, 'pelayanan_surat', '<ol>\r\n	<li>Surat Keterangan Kartu Keluarga Baru</li>\r\n	<li>Surat Keterangan Penambahan Anggota KK</li>\r\n	<li>Surat Keterangan Pengurangan Anggota KK</li>\r\n	<li>Surat Keterangan KTP Baru</li>\r\n	<li>Surat Keterangan Kehilangan KTP</li>\r\n	<li>Surat Keterangan Kelahiran</li>\r\n	<li>Surat Keterangan Meninggal Dunia</li>\r\n	<li>Surat Keterangan Pindah Penduduk</li>\r\n	<li>Surat Keterangan Kurang Mampu(Miskin)</li>\r\n	<li>Surat Keterangan Sudah Menikah</li>\r\n	<li>Surat Keterangan Belum Menikah</li>\r\n	<li>Surat Keterangan Bercerai</li>\r\n</ol>\r\n'),
 (18, 'foto_dev', ''),
-(19, 'logo_surat', '1106_logo.png'),
-(20, 'kop_surat', '<p style=\"text-align:center\">PEMERINTAH KABUPATEN ACEH UTARA</p>\r\n\r\n<p style=\"text-align:center\">KECAMATAN MEURAH MULIA</p>\r\n\r\n<p style=\"text-align:center\">GAMPONG ULEE CEUBREK</p>\r\n'),
-(21, 'kode_surat', '15/UC'),
-(22, 'nama_desa', 'Banyuasin'),
-(23, 'pj_surat', 'Muzzani, S.T., M.KOM'),
-(24, 'jab_surat', 'Lurah');
+(22, 'nama_desa', 'Banyuasin');
 
 -- --------------------------------------------------------
 
@@ -380,10 +373,7 @@ CREATE TABLE `surat_sengketa` (
 
 CREATE TABLE `user` (
   `user_id` int(50) NOT NULL,
-  `penduduk_id` text NOT NULL,
   `user_lvl` text NOT NULL,
-  `jabatan` text NOT NULL,
-  `jabatan_status` int(11) NOT NULL,
   `user_status` text NOT NULL,
   `user_login` text NOT NULL,
   `user_name` text NOT NULL,
@@ -395,18 +385,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `penduduk_id`, `user_lvl`, `jabatan`, `jabatan_status`, `user_status`, `user_login`, `user_name`, `user_pass`, `user_email`) VALUES
-(11, '10', 'rakyat', '0', 0, '1', '1108071404690001', 'Abdullah', 'ac167c93801b23d32d3f6ed9752378ec', ''),
-(12, '11', 'lurah', '1', 1, '1', 'kades', 'Nasrul Fadhil', 'a9744487660c9a0b4c931b3609d712e2', ''),
-(13, '12', 'admin', '2', 1, '1', 'admin', 'Yunita Fitriani', '21232f297a57a5a743894a0e4a801fc3', ''),
-(14, '13', 'rakyat', '', 0, '1', '1108072406150001', 'Muhammad Rafa Azka Putra', '404be13c483edc4cd5961bcbeef84237', ''),
-(15, '14', 'rakyat', '', 0, '1', '1108074909780001', 'Nurjannah', '05c98684dc30079618565d9738c3a00f', ''),
-(16, '15', 'rakyat', '', 0, '1', 'pendes', 'Muhammad Ichsan', '348dcfe88c7700bc1c42eb13d488248e', ''),
-(17, '16', 'rakyat', '', 0, '1', '1108076302010001', 'Liza Rahmati', 'deee53665e41a4fa9016b9fdcfc47adc', ''),
-(18, '17', 'rakyat', '', 0, '1', '1108074906040001', 'Diniati', '8913495f6df29f6212caa2104b8399b4', ''),
-(19, '18', 'rakyat', '', 0, '1', '1108070107540117', 'Abdul Muttaleb', 'b697d1b23ca379e9aec28ee049402fcd', ''),
-(21, '20', 'rakyat', '', 0, '1', '1108072606920001', 'Hasan Basri', '7980d0cb50f97b4efc45f41415762357', ''),
-(22, '21', 'rakyat', '', 0, '1', '1108074605940002', 'Halimaton Sakdiah', 'df2d34cb0dbc7b7b9f4cf98760eb10c7', '');
+INSERT INTO `user` (`user_id`, `user_lvl`, `user_status`, `user_login`, `user_name`, `user_pass`, `user_email`) VALUES
+(13, 'admin', '1', 'admin', 'wira', '21232f297a57a5a743894a0e4a801fc3', '');
 
 --
 -- Indexes for dumped tables

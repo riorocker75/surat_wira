@@ -95,7 +95,7 @@
 
 
 
-     <hr class="sidebar-divider">
+     <!-- <hr class="sidebar-divider">
     <div class="sidebar-heading">
       Profil
       </div>
@@ -103,7 +103,7 @@
         <a class="nav-link" href="<?php echo base_url().'admin/data_pribadi/'.$this->session->userdata('penduduk_id');?>">
           <i class="fa fa-lock" aria-hidden="true"></i>
           <span>Data Pribadi</span></a>
-      </li>
+      </li> -->
 
 
       <!-- Nav Item - Utilities Collapse Menu -->
@@ -142,37 +142,7 @@
 	<!------------------------ 
 	|	start rakyat sidebar 
 	|------------------------>
-	<?php if($this->session->userdata('level')== "rakyat"){?>
-
-	<!-- <hr class="sidebar-divider"> -->
-	 <!--  <div class="sidebar-heading">
-        Sesi Penduduk
-      </div> -->
-        <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-       Penduduk
-      </div>
-	  <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'admin/data_pribadi/'.$this->session->userdata('penduduk_id');?>">
-          <i class="fa fa-lock" aria-hidden="true"></i>
-          <span>Data Pribadi</span></a>
-      </li>
-      <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-       Pengajuan Surat Pribadi
-      </div>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'admin/sesi_surat/';?>">
-          <i class="fas fa-mail-bulk    "></i>
-          <span>Ajukan Surat</span></a>
-      </li>
-
-         <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'user/arsip_surat/';?>">
-          <i class="fas fa-archive"></i>
-          <span>Riwayat Pengajuan Surat</span></a>
-      </li>
-	<?php }?>
+	
 	<!------------------------ 
 	|	end rakyat sidebar 
 	|------------------------>
@@ -272,71 +242,20 @@ Selamat Datang <?php echo $this->m_dah->status_login($this->session->userdata('l
 	  <!-- Nav Item - Alerts -->
 	  
 
-	  <!-- Nav Item - Messages -->
-    <?php if($this->session->userdata('level') == "rakyat"){?>
-	  <li class="nav-item dropdown no-arrow mx-1" id="update_notif">
-     <?php }else{ ?>
-    <li class="nav-item dropdown no-arrow mx-1" >
-    <?php } ?>  
-		<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		  <i class="fas fa-envelope fa-fw"></i>
-      <!-- Counter - Messages -->
-      <?php if($this->session->userdata('level') == "admin"){?>
-		  <span class="badge badge-danger badge-counter">
-        <?php 
-         $wh=array('status_surat' => "review");
-         $total_review=$this->m_dah->edit_data($wh,'surat_mohon')->num_rows();
-         echo $total_review;
-         ?>
-      </span>
-
-      <?php }?>
+	  
       <!-- end total notifikasi admin -->
 
       <!-- start total notifkasi rakyat -->
-      <?php if($this->session->userdata('level') == "rakyat"){?>
-        <?php 
-          $tot_not=$this->m_dah->cek_notif_user($this->session->userdata('penduduk_id'), 2)->num_rows();
-          if($tot_not > 0 ){
-         ?>  
-		    <span class="badge badge-danger badge-counter" style="margin-right:-7px!important">
-           cek
-        </span>
-         <?php }else{}?>
-
-      <?php }?>
+     
       <!-- end total notifikasi rakyat -->
 
-      <!-- start total notifkasi lurah -->
-      <?php if($this->session->userdata('level') == "lurah"){?>
-		  <span class="badge badge-danger badge-counter">
-        
-      </span>
-      <?php }?>
-      <!-- end total notifikasi lurah -->
+     
 
 		</a>
 
     <!-- Dropdown - Messages -->
     <?php if($this->session->userdata('level') == "admin"){?>
-		<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-		  <h6 class="dropdown-header">
-			Notifikasi 
-      </h6>
-      <?php 
-         $review=$this->m_dah->get_surat_limit('review',5)->result();
-        foreach($review as $rv){
-      ?>
-      <a class="dropdown-item d-flex align-items-center" href="#">
-        
-        <div>
-          <div class="small text-gray-500"><?php echo $rv->surat_mohon_id?></div>
-          <span class="font-weight-bold"><?php echo $rv->ket_surat?></span>
-        </div>
-      </a>
-        <?php } ?>
-		  <a class="dropdown-item text-center small text-gray-500" href="<?php echo base_url().'admin/permohonan_surat'?>">Lihat selengkapnya</a>
-    </div>
+		
     <?php }?>
 
     <?php if($this->session->userdata('level') == "rakyat"){?>
