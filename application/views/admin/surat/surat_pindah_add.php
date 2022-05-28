@@ -29,6 +29,12 @@
                                     <label for="">Tanggal</label>
                                     <input type="date" class="form-control form-control-user" name="tanggal" value="<?php echo date("Y-m-d");?>">
                                 </div>
+
+                                  <div class="form-group">
+                                    <label for="">Kepala Keluarga</label>
+                                    <input type="text" class="form-control form-control-user" name="nama_kepala" required>
+                                     <?php echo form_error('nama_kepala', '<div class="form-error">', '</div>'); ?>
+                                </div>
                                 <div class="form-group">
                                     <label for="">Anggota keluarga yang pindah</label>
                                     <input type="text" class="form-control form-control-user" name="nama_pindah">

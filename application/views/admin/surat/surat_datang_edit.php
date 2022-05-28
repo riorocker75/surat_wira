@@ -15,11 +15,10 @@
                     </div>
                     <div class="card-body">
                         <?php foreach($data as $dt){?>
-                    <form action="<?php echo base_url().'admin/surat_datang_act'?>" method="post" enctype='multipart/form-data'>
+                    <form action="<?php echo base_url().'admin/surat_datang_update'?>" method="post" enctype='multipart/form-data'>
                         <div class="row">
                             <div class="col-lg-6">
                                 
-
                                 <div class="form-group">
                                     <label for="">Nomor Surat Pindah Asal</label>
                                     <input type="text" class="form-control form-control-user" name="no_surat_pindah" value="<?php echo $dt->no_surat_pindah ?>" >
@@ -32,6 +31,13 @@
                                     <label for="">Tanggal</label>
                                     <input type="date" class="form-control form-control-user" name="tanggal" value="<?php echo date("Y-m-d",strtotime($dt->tanggal));?>" >
                                 </div>
+
+                                  <div class="form-group">
+                                    <label for="">Kepala Keluarga</label>
+                                    <input type="text" class="form-control form-control-user" name="nama_kepala" value="<?php echo $dt->nama_kepala ?>" >
+                                     <?php echo form_error('nama_kepala', '<div class="form-error">', '</div>'); ?>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="">Anggota keluarga yang datang</label>
                                     <input type="text" class="form-control form-control-user" name="nama_datang" value="<?php echo $dt->nama_datang ?>" >

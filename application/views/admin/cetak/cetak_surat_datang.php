@@ -119,6 +119,7 @@
                 <th>No</th>
                 <th>Tanggal</th>
                 <th>Nomor Surat Pindah Asal</th>
+                <th>Kepala Keluarga</th>
                 <th>Anggota Keluarga yang datang</th>
                 <th>NIK</th>
                 <th>Alamat</th>
@@ -134,6 +135,9 @@
                 <td><?php echo $no++?></td>
                   <td><?php echo date('Y-m-d',strtotime($dt->tanggal)) ?></td>
                     <td><?php echo $dt->no_surat_pindah ?></td>
+                    <td>
+                      <?php echo $dt->nama_kepala ?>
+                    </td>
                     <td>
                       <?php echo $dt->nama_datang ?>
                     </td>

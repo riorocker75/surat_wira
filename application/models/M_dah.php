@@ -93,7 +93,7 @@ class M_dah extends CI_Model{
 				echo "Perempuan";
 			break;
 			default:
-				echo"tidak ada kelamin banci";
+				echo"tidak ada ";
 			break;
 
 		}

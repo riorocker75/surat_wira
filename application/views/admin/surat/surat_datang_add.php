@@ -37,7 +37,7 @@
 
                                 <div class="form-group">
                                     <label for="">Jenis Kelamin</label>
-                                    <select class="form-control form-control-user" name="jenis_kelamin">
+                                    <select class="form-control form-control-user" name="jenis_kelamin" require>
                                     <option value="">--Pilih Jenis Kelamin--</option>
                                     <option value="pria">Laki-laki</option>
                                     <option value="wanita">Perempuan</option>

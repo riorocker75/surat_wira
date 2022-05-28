@@ -1178,6 +1178,8 @@ function surat_pindah(){
 				'nama_pindah' => $this->input->post('nama_pindah'),
 				'no_surat' => $this->input->post('no_surat'),
 				'tanggal' => $this->input->post('tanggal'),
+				'nama_kepala' => $this->input->post('nama_kepala'),
+
 				'no_kk' => $this->input->post('no_kk'),
 				'nik' => $this->input->post('nik'),
 				'daerah_tujuan' => $this->input->post('daerah_tujuan'),
@@ -1263,6 +1265,8 @@ function surat_pindah(){
                     'nama_pindah' => $this->input->post('nama_pindah'),
                     'no_surat' => $this->input->post('no_surat'),
                     'tanggal' => $this->input->post('tanggal'),
+					'nama_kepala' => $this->input->post('nama_kepala'),
+
                     'no_kk' => $this->input->post('no_kk'),
                     'nik' => $this->input->post('nik'),
                     'daerah_tujuan' => $this->input->post('daerah_tujuan'),
@@ -1374,6 +1378,8 @@ function surat_datang(){
 				'tanggal' => $this->input->post('tanggal'),
 				'nik' => $this->input->post('nik'),
 				'tmp_tgl_lhr' => $this->input->post('tmp_tgl_lhr'),
+				'nama_kepala' => $this->input->post('nama_kepala'),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
 
 				'daerah_asal' => $this->input->post('daerah_asal'),
 				'kecamatan' => $this->input->post('kecamatan'),
@@ -1456,7 +1462,7 @@ function surat_datang(){
 			);
 
 			if($this->form_validation->run() != true){
-				redirect(base_url().'admin/surat_datang_add');
+				redirect(base_url().'admin/surat_datang');
 			}else{
 			
 				$data_pd=array(
@@ -1465,7 +1471,10 @@ function surat_datang(){
                     'tanggal' => $this->input->post('tanggal'),
                     'nik' => $this->input->post('nik'),
                     'tmp_tgl_lhr' => $this->input->post('tmp_tgl_lhr'),
+					'nama_datang' => $this->input->post('nama_datang'),
 
+					'nama_kepala' => $this->input->post('nama_kepala'),
+					'jenis_kelamin' => $this->input->post('jenis_kelamin'),
                     'daerah_asal' => $this->input->post('daerah_asal'),
                     'kecamatan' => $this->input->post('kecamatan'),
                     'kabupaten' => $this->input->post('kabupaten'),

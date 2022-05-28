@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2022 at 07:32 AM
+-- Generation Time: May 28, 2022 at 12:17 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -209,6 +209,7 @@ CREATE TABLE `surat_datang` (
   `no_surat_pindah` text NOT NULL,
   `tanggal` date NOT NULL,
   `nama_datang` text NOT NULL,
+  `nama_kepala` text NOT NULL,
   `jenis_kelamin` text NOT NULL,
   `tmp_tgl_lhr` text NOT NULL,
   `nik` text NOT NULL,
@@ -220,6 +221,13 @@ CREATE TABLE `surat_datang` (
   `lampiran` text NOT NULL,
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `surat_datang`
+--
+
+INSERT INTO `surat_datang` (`id`, `no_surat_pindah`, `tanggal`, `nama_datang`, `nama_kepala`, `jenis_kelamin`, `tmp_tgl_lhr`, `nik`, `daerah_asal`, `kecamatan`, `kabupaten`, `provinsi`, `alamat`, `lampiran`, `status`) VALUES
+(2, 'adsdasd', '2022-04-24', 'asdasd', 'asdasd', 'pria', 'asdasd', '123123', 'asdasd', 'asd', 'asd', 'asd', 'asd', '8190_fdf.PNG', '1');
 
 -- --------------------------------------------------------
 
@@ -238,6 +246,13 @@ CREATE TABLE `surat_keluar` (
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `surat_keluar`
+--
+
+INSERT INTO `surat_keluar` (`id`, `pengirim`, `no_surat`, `tgl_surat`, `tgl_keluar`, `lampiran`, `deskripsi`, `status`) VALUES
+(2, 'dnasjdnajs', 'asdasd', '2022-04-24', '2022-04-24', '3906_fdf.PNG', 'dasdasd', '');
+
 -- --------------------------------------------------------
 
 --
@@ -255,6 +270,13 @@ CREATE TABLE `surat_ket` (
   `lampiran` text NOT NULL,
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `surat_ket`
+--
+
+INSERT INTO `surat_ket` (`id`, `jenis_surat`, `no_surat`, `pemohon`, `keperluan`, `tanggal`, `alamat`, `lampiran`, `status`) VALUES
+(2, 'sdasd', '12312', 'asdasd', 'adsdas', '2022-04-24', 'asdas', '2560_ax.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -303,6 +325,13 @@ CREATE TABLE `surat_mati` (
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `surat_mati`
+--
+
+INSERT INTO `surat_mati` (`id`, `no_surat`, `nama_kepala`, `nama_meninggal`, `jenis_kelamin`, `no_kk`, `nik`, `tanggal`, `tgl_lhr`, `tgl_meninggal`, `alamat`, `pelapor`, `lampiran`, `status`) VALUES
+(2, 'dasd', 'asdasdasda', 'asdas', 'pria', '123123', 'sdfsdf', '2022-04-24', '2022-04-24', '2022-04-24', 'asdasd', 'asdas', '5825_ax.jpg', '');
+
 -- --------------------------------------------------------
 
 --
@@ -337,6 +366,7 @@ CREATE TABLE `surat_pindah` (
   `no_surat` varchar(100) NOT NULL,
   `tanggal` date NOT NULL,
   `nama_pindah` text NOT NULL,
+  `nama_kepala` text NOT NULL,
   `no_kk` text NOT NULL,
   `nik` text NOT NULL,
   `daerah_tujuan` text NOT NULL,
@@ -346,6 +376,13 @@ CREATE TABLE `surat_pindah` (
   `lampiran` text NOT NULL,
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `surat_pindah`
+--
+
+INSERT INTO `surat_pindah` (`id`, `no_surat`, `tanggal`, `nama_pindah`, `nama_kepala`, `no_kk`, `nik`, `daerah_tujuan`, `kecamatan`, `kabupaten`, `provinsi`, `lampiran`, `status`) VALUES
+(2, 'dasdasd123123', '2022-04-24', 'asdasd', 'Sumanto', '123123', '123123', 'asdasdasd', 'asd', 'asd', 'asd', '5072_bookcov.png', '');
 
 -- --------------------------------------------------------
 
@@ -364,6 +401,13 @@ CREATE TABLE `surat_sengketa` (
   `lampiran` text NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `surat_sengketa`
+--
+
+INSERT INTO `surat_sengketa` (`id`, `jenis_surat`, `no_surat`, `pemohon`, `keperluan`, `tanggal`, `alamat`, `lampiran`, `status`) VALUES
+(2, 'qwejqwej', '123', 'dasd', 'adsd', '2022-04-24', 'asdasd', '6162_fffg.PNG', 0);
 
 -- --------------------------------------------------------
 
@@ -526,19 +570,19 @@ ALTER TABLE `penduduk`
 -- AUTO_INCREMENT for table `surat_datang`
 --
 ALTER TABLE `surat_datang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `surat_keluar`
 --
 ALTER TABLE `surat_keluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `surat_ket`
 --
 ALTER TABLE `surat_ket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `surat_masuk`
@@ -550,7 +594,7 @@ ALTER TABLE `surat_masuk`
 -- AUTO_INCREMENT for table `surat_mati`
 --
 ALTER TABLE `surat_mati`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `surat_mohon`
@@ -562,13 +606,13 @@ ALTER TABLE `surat_mohon`
 -- AUTO_INCREMENT for table `surat_pindah`
 --
 ALTER TABLE `surat_pindah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `surat_sengketa`
 --
 ALTER TABLE `surat_sengketa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`

@@ -34,6 +34,11 @@
                                     </td>
                                 </tr>
 
+                                <tr>
+                                    <td>Kepala Keluarga</td>
+                                    <td><?php echo $dt->nama_kepala?></td>
+                                </tr>
+
                                  <tr>
                                     <td>Anggota Keluarga yang datang</td>
                                     <td><?php echo $dt->nama_datang?></td>
