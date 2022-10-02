@@ -37,7 +37,7 @@
                                 <tr>
                                     <td>Tanggal Surat</td>
                                     <td>
-                                        <?php echo date('Y-m-d',strtotime($dt->tgl_surat))?>
+                                        <?php echo date('Y-m-d',strtotime($dt->tanggal))?>
                                     </td>
                                 </tr>
 

@@ -110,48 +110,6 @@ Arsip surat
 ------------------------
 */
 
-function arsip_surat(){
-	$this->load->database();
-	$id_penduduk=$this->session->userdata('penduduk_id');
-
-	$data['surat_lain']=$this->m_dah->pilih_surat_lain_semua($id_penduduk,'surat_mohon')->result();
-
-	
-	$data['surat_lain_review']=$this->m_dah->pilih_surat_lain($id_penduduk,'review','surat_mohon')->result();
-	$data['surat_lain_tolak']=$this->m_dah->pilih_surat_lain($id_penduduk,'ditolak','surat_mohon')->result();
-	$data['surat_lain_terima']=$this->m_dah->pilih_surat_lain($id_penduduk,'diterima','surat_mohon')->result();
-	
-	$data['total_lain_terima']=$this->m_dah->pilih_surat_lain($id_penduduk,'diterima','surat_mohon')->num_rows();
-	$data['total_lain_tolak']=$this->m_dah->pilih_surat_lain($id_penduduk,'ditolak','surat_mohon')->num_rows();
-	$data['total_lain_review']=$this->m_dah->pilih_surat_lain($id_penduduk,'review','surat_mohon')->num_rows();
-	
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_arsip_user',$data);
-	$this->load->view('admin/v_footer');	
-}
-
-
-
-/*
--------------------------
-Pengajuan surat kk Baru
-------------------------
-*/
-function mohon_kk_baru(){
-	$this->load->database();
-	$data['penduduk']=$this->m_dah->get_data('penduduk')->result();
-	$id_user=$this->session->userdata('penduduk_id');
-	
-	$where_user=array(
-		'id' => $id_user
-	);
-	$data['data_diri']=$this->m_dah->edit_data($where_user,'penduduk')->result();
-
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/sesi_surat/x_kk_baru',$data);
-	$this->load->view('admin/v_footer');
-
-}	
 
 
 

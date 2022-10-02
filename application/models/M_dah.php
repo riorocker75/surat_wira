@@ -39,6 +39,11 @@ class M_dah extends CI_Model{
 	// 	return $this->db->get($table);
 	// }
 
+	function cetak_filter($first_date,$second_date,$surat){
+		$this->db->where('tanggal >=', $first_date);
+		$this->db->where('tanggal <=', $second_date);
+		return $this->db->get($surat);
+	}
 	function get_year($table,$row){
 		return $this->db->query("SELECT * FROM $table WHERE year($row) = YEAR(now())");
 	}
@@ -349,6 +354,10 @@ function kk_total($status_kel){
 
 function dusun_total($dusun){
 	return $this->db->query("select *from penduduk where dusun='$dusun' ");
+}
+
+function tot_surat($table,$status){
+	return $this->db->query("select *from $table where status='$status_kel' ");
 }
 
 function tot_surat_masuk($status){

@@ -31,10 +31,24 @@
         </div>
 
         <div class="card-body">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+                  <form action="<?php echo base_url().'admin/surat_masuk_cetak_filter'?>" method="post">
+                      <div class="form-group">
+                              <label for="">Dari Tanggal</label>
+                              <input type="date" class="form-control form-control-user" name="dari" value="<?php echo date('Y-m-d')?>" required>
+                      </div>
+                      <div class="form-group">
+                              <label for="">Sampai Tanggal</label>
+                              <input type="date" class="form-control form-control-user" name="sampai" value="<?php echo date('Y-m-d')?>" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Cetak</button>
+                    </form>
+               </div>
+          </div>
           <div class="float-right">
             <?php if ($this->session->userdata('level') == "admin") { ?>
               <a href="<?php echo base_url().'admin/surat_masuk_add' ?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-envelope" aria-hidden="true"></i> Tambah Surat Masuk</a>
-              <a href="<?php echo base_url().'admin/surat_masuk_cetak' ?>" class="d-sm-inline-block btn btn-sm btn-default shadow-sm"><i class="fa fa-print" aria-hidden="true"></i> Print</a>
 
             <?php } else {
             } ?>
@@ -64,7 +78,7 @@
                     </td>
 
                     <td><?php echo $dt->no_surat ?></td>
-                    <td><?php echo date('Y-m-d',strtotime($dt->tgl_surat)) ?></td>
+                    <td><?php echo date('Y-m-d',strtotime($dt->tanggal)) ?></td>
                     <td><?php echo date('Y-m-d',strtotime($dt->tgl_masuk)) ?></td>
                     <td><?php echo $this->m_dah->preview_file($dt->lampiran) ?></td>
 

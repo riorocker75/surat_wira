@@ -59,9 +59,9 @@
                                 </tr>
 
                                  <tr>
-                                    <td>Tanggal Lahir</td>
+                                    <td>Umur</td>
                                     <td>
-                                        <?php echo date('Y-m-d',strtotime($dt->tgl_lhr))?>
+                                        <?php echo $dt->umur ?> Tahun
                                     </td>
                                 </tr>
 

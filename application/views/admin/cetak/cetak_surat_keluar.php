@@ -109,8 +109,7 @@
 
     <div class="container">
         <div style="text-align:center;margin-top:30px">
-        <h5> Rekapan Surat Keluar Pertahun</h5>
-			<h5><?php echo date('Y') ?></h5>
+        <h5> Rekapan Surat Keluar </h5>
         </div>
 
         <table id="datatable" class="table table-bordered table-hover">
@@ -134,7 +133,7 @@
                     </td>
 
                     <td><?php echo $dt->no_surat ?></td>
-                    <td><?php echo date('Y-m-d',strtotime($dt->tgl_surat)) ?></td>
+                    <td><?php echo date('Y-m-d',strtotime($dt->tanggal)) ?></td>
                     <td><?php echo date('Y-m-d',strtotime($dt->tgl_keluar)) ?></td>
                                 
             </tr>  

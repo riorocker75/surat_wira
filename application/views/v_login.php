@@ -20,16 +20,19 @@
   <link href="<?php echo base_url(); ?>assets_f/css/custom.css" rel="stylesheet">
 
 </head>
-
-<body class="bg-gradient-primary">
+<style>
+      .bg-gradient-primary{
+        background-image:url('<?php echo base_url(); ?>assets_f/img/bg_login.jpg')!important;
+      }
+  </style>
+<body class="bg-gradient-primary" >
 <!-- <body class=""> -->
 
   <div class="container">
-
+  
     <!-- Outer Row -->
 
-    <div class="row justify-content-center">
-
+    <div class="row justify-content-center" style="margin-top:80px">
 
       <div class="col-xl-5 col-lg-12 col-md-8">
 

@@ -75,11 +75,11 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="">Tanggal Lahir</label>
-                                    <input type="date" class="form-control form-control-user" name="tgl_lhr" value="<?php echo date("Y-m-d",strtotime($dt->tgl_lhr));?>">
+                                    <label for="">Umur</label>
+                                    <input type="number" class="form-control form-control-user" name="umur" value="<?php echo $dt->umur ?>">
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group"
                                     <label for="">Tanggal Meninggal</label>
                                     <input type="date" class="form-control form-control-user" name="tgl_meninggal" value="<?php echo date("Y-m-d",strtotime($dt->tgl_meninggal));?>">
                                 </div>

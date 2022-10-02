@@ -110,7 +110,6 @@
     <div class="container">
         <div style="text-align:center;margin-top:30px">
         <h5> Rekapan Surat Pindah </h5>
-			<h5><?php echo date('Y') ?></h5>
         </div>
 
         <table id="datatable" class="table table-bordered table-hover">

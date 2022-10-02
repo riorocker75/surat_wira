@@ -12,7 +12,7 @@
 		<?php if($this->session->userdata('level') == "admin"){?>
 		<div class="row">
 				<div class="col-lg-4 mb-4">
-			<div class="card bg-info text-white shadow">
+			<div class="card bg-primary text-white shadow">
 			<div class="card-body">
 				<div class="row no-gutters align-items-center">
 					<div class="col-auto">
@@ -53,6 +53,112 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="col-lg-4 mb-4">
+			<div class="card bg-primary text-white shadow">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col-auto">
+						<i class="fa fa-envelope-open fa-2x text-gray-300" aria-hidden="true"></i>
+						<!-- <i class="fas fa-comments fa-2x text-gray-300"></i> -->
+					</div>
+					<div class="col mr-3" style="margin-left:20px">
+						<?php echo $this->m_dah->tot_surat('surat_ket',1)->num_rows(); ?> Surat Keterangan
+						<div class="text-white-50">Jumlah Surat Keterangan</div>
+						</div>
+					</div>
+					<div style="position:absolute;bottom:5px;right:10px">
+						<a href="<?php echo base_url().'admin/surat_ket'?>" class="text-white-50" style="text-decoration:none;">Selengkapnya <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 mb-4">
+			<div class="card bg-primary text-white shadow">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col-auto">
+						<i class="fa fa-envelope-open fa-2x text-gray-300" aria-hidden="true"></i>
+						<!-- <i class="fas fa-comments fa-2x text-gray-300"></i> -->
+					</div>
+					<div class="col mr-3" style="margin-left:20px">
+						<?php echo $this->m_dah->tot_surat('surat_sengketa',1)->num_rows(); ?> Surat Sengketa
+						<div class="text-white-50">Jumlah Surat Sengketa</div>
+						</div>
+					</div>
+					<div style="position:absolute;bottom:5px;right:10px">
+						<a href="<?php echo base_url().'admin/surat_sengketa'?>" class="text-white-50" style="text-decoration:none;">Selengkapnya <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-4 mb-4">
+			<div class="card bg-primary text-white shadow">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col-auto">
+						<i class="fa fa-envelope-open fa-2x text-gray-300" aria-hidden="true"></i>
+						<!-- <i class="fas fa-comments fa-2x text-gray-300"></i> -->
+					</div>
+					<div class="col mr-3" style="margin-left:20px">
+						<?php echo $this->m_dah->tot_surat('surat_mati',1)->num_rows(); ?> Surat Kematian
+						<div class="text-white-50">Jumlah Surat Kematian</div>
+						</div>
+					</div>
+					<div style="position:absolute;bottom:5px;right:10px">
+						<a href="<?php echo base_url().'admin/surat_mati'?>" class="text-white-50" style="text-decoration:none;">Selengkapnya <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-4 mb-4">
+			<div class="card bg-primary text-white shadow">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col-auto">
+						<i class="fa fa-envelope-open fa-2x text-gray-300" aria-hidden="true"></i>
+						<!-- <i class="fas fa-comments fa-2x text-gray-300"></i> -->
+					</div>
+					<div class="col mr-3" style="margin-left:20px">
+						<?php echo $this->m_dah->tot_surat('surat_pindah',1)->num_rows(); ?> Surat Pindah
+						<div class="text-white-50">Jumlah Surat Pindah</div>
+						</div>
+					</div>
+					<div style="position:absolute;bottom:5px;right:10px">
+						<a href="<?php echo base_url().'admin/surat_pindah'?>" class="text-white-50" style="text-decoration:none;">Selengkapnya <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-4 mb-4">
+			<div class="card bg-primary text-white shadow">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col-auto">
+						<i class="fa fa-envelope-open fa-2x text-gray-300" aria-hidden="true"></i>
+						<!-- <i class="fas fa-comments fa-2x text-gray-300"></i> -->
+					</div>
+					<div class="col mr-3" style="margin-left:20px">
+						<?php echo $this->m_dah->tot_surat('surat_datang',1)->num_rows(); ?> Surat Datang
+						<div class="text-white-50">Jumlah Surat Datang</div>
+						</div>
+					</div>
+					<div style="position:absolute;bottom:5px;right:10px">
+						<a href="<?php echo base_url().'admin/surat_datang'?>" class="text-white-50" style="text-decoration:none;">Selengkapnya <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+
+
 
 		<!-- end jumlah penduduk -->
 

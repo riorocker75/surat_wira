@@ -25,11 +25,6 @@
 						<th>Deskripsi</th>			
 						<td><textarea name="blog_description" class="form-control"><?php echo $this->m_dah->get_option('blog_description'); ?></textarea></td>
 					</tr>
-
-					<tr>
-						<th>Berita</th>			
-						<td><textarea id="editor1" name="blog_welcome" class="form-control" style="min-height:300px"><?php echo $this->m_dah->get_option('blog_welcome'); ?></textarea></td>
-					</tr>
 			<!-- 		<tr>
 						<th>Web Logo</th>			
 						<td>

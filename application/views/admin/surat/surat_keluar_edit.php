@@ -47,7 +47,7 @@
                             <div class="col-lg-6">
                                        <div class="form-group">
                                     <label for="">Tanggal Surat</label>
-                                    <input type="date" class="form-control form-control-user" name="tgl_surat" value="<?php echo date('Y-m-d',strtotime($dt->tgl_surat))?>" >
+                                    <input type="date" class="form-control form-control-user" name="tgl_surat" value="<?php echo date('Y-m-d',strtotime($dt->tanggal))?>" >
                                 </div>
 
                                        <div class="form-group">

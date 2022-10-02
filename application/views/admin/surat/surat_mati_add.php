@@ -73,9 +73,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="">Tanggal Lahir</label>
-                                    <input type="date" class="form-control form-control-user" name="tgl_lhr" value="<?php echo date("Y-m-d");?>">
-                                </div>
+                                    <label for="">Umur</label>
+                                    <input type="number" class="form-control form-control-user" name="umur">                                </div>
 
                                 <div class="form-group">
                                     <label for="">Tanggal Meninggal</label>

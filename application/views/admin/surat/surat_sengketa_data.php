@@ -31,10 +31,25 @@
         </div>
 
         <div class="card-body">
+        <div class="row">
+              <div class="col-lg-4 col-md-6 col-12">
+                    <form action="<?php echo base_url().'admin/surat_sengketa_cetak_filter'?>" method="post">
+                        <div class="form-group">
+                                <label for="">Dari Tanggal</label>
+                                <input type="date" class="form-control form-control-user" name="dari" value="<?php echo date('Y-m-d')?>" required>
+                        </div>
+                        <div class="form-group">
+                                <label for="">Sampai Tanggal</label>
+                                <input type="date" class="form-control form-control-user" name="sampai" value="<?php echo date('Y-m-d')?>" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cetak</button>
+                      </form>
+                </div>
+            </div>
           <div class="float-right">
             <?php if ($this->session->userdata('level') == "admin") { ?>
               <a href="<?php echo base_url().'admin/surat_sengketa_add' ?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-envelope" aria-hidden="true"></i> Tambah surat</a>
-              <a href="<?php echo base_url().'admin/surat_sengketa_cetak' ?>" class="d-sm-inline-block btn btn-sm btn-default shadow-sm"><i class="fa fa-print" aria-hidden="true"></i> Print</a>
+              <!-- <a href="<?php echo base_url().'admin/surat_sengketa_cetak' ?>" class="d-sm-inline-block btn btn-sm btn-default shadow-sm"><i class="fa fa-print" aria-hidden="true"></i> Print</a> -->
 
             <?php } else {
             } ?>
@@ -44,7 +59,7 @@
               <thead>
                 <tr>
                   <th width="2%">No</th>
-                  <th>Tanggal Surat</th>
+                  <th>Tanggal</th>
                   <th>Nomor Surat</th>
                   <th>Jenis Surat</th>
                   <th>Pemohon</th>

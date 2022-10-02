@@ -127,100 +127,6 @@ class Admin extends CI_Controller {
 		$this->m_dah->update_data($where,$data,'dah_options');
 	}
 
-	
-	/*
-|---------------------------------
-|	Bagian tambah data agama
-|----------------------------------
-*/
-
-	function agama(){
-		$this->load->database();
-		
-		$data['agama']=$this->m_dah->get_data('agama')->result();
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/data_opsi/v_data_agama',$data);
-		$this->load->view('admin/v_footer');
-	}
-
-	function agama_add(){
-		$this->load->database();
-		$this->form_validation->set_rules('agama','Agama','required');
-		if($this->form_validation->run() != true){
-			$data['agama'] = $this->m_dah->get_data('agama')->result();
-			$this->load->view('admin/v_header');
-			$this->load->view('admin/data_opsi/v_data_agama',$data);
-			$this->load->view('admin/v_footer');
-		}else{
-			$agama = $this->input->post('agama');
-			$data=array(
-				'agama' => $agama
-			);
-			$this->m_dah->insert_data($data,'agama');
-			redirect(base_url().'admin/agama?alert=add');
-		}
-	
-	}
-
-	function agama_edit($id){
-		$this->load->database();
-
-		if($id == ""){
-			// redirect('admin/agama');
-		}else{			
-			$where = array(
-				'id' => $id
-				);	
-			$data['edit'] = $this->m_dah->edit_data($where,'agama')->result();
-			$data['agama']=$this->m_dah->get_data('agama')->result();
-
-			$this->load->view('admin/v_header');
-			$this->load->view('admin/data_opsi/v_edit_agama',$data);
-			$this->load->view('admin/v_footer');
-		}
-		
-	}
-	function agama_update(){
-		$this->load->database();
-		$id = $this->input->post('id');
-		$this->form_validation->set_rules('agama','agama','required');
-		if($this->form_validation->run() != true){
-			$where = array(
-				'id' => $id
-				);	
-			$data['edit'] = $this->m_dah->edit_data($where,'agama')->result();
-			$data['agama'] = $this->m_dah->get_data('agama')->result();
-			$this->load->view('admin/v_header');
-			$this->load->view('admin/data_opsi/v_edit_agama',$data);
-			$this->load->view('admin/v_footer');
-		}else{			
-			$agama = $this->input->post('agama');
-			$data = array(
-				'agama' => $agama
-				);
-			
-			$w = array(
-				'id' => $id
-				);
-			$this->m_dah->update_data($w,$data,'agama');
-			redirect(base_url().'admin/agama/?alert=update');
-		}	
-		
-	}
-
-	function agama_delete($id){
-		$this->load->database();
-		if($id == ""){
-			redirect('admin/agama');
-		}else{
-			$wt = array(
-				'id' => $id
-				);
-			$this->m_dah->delete_data($wt,'agama');
-			
-			redirect('admin/agama/?alert=delete');
-		}
-	}
 
 /*
 |---------------------------------
@@ -263,7 +169,7 @@ class Admin extends CI_Controller {
 				'pengirim' => $this->input->post('pengirim'),
 				'no_surat' => $this->input->post('no_surat'),
 				'deskripsi' => $this->input->post('deskripsi'),
-				'tgl_surat' => $this->input->post('tgl_surat'),
+				'tanggal' => $this->input->post('tgl_surat'),
 				'tgl_masuk' => $this->input->post('tgl_masuk'),
 
 			);
@@ -340,7 +246,7 @@ class Admin extends CI_Controller {
 					'pengirim' => $this->input->post('pengirim'),
 					'no_surat' => $this->input->post('no_surat'),
 					'deskripsi' => $this->input->post('deskripsi'),
-					'tgl_surat' => $this->input->post('tgl_surat'),
+					'tanggal' => $this->input->post('tgl_surat'),
 					'tgl_masuk' => $this->input->post('tgl_masuk'),
 				);
 				$this->m_dah->update_data($where,$data_pd,'surat_masuk');
@@ -434,7 +340,7 @@ class Admin extends CI_Controller {
 				'pengirim' => $this->input->post('pengirim'),
 				'no_surat' => $this->input->post('no_surat'),
 				'deskripsi' => $this->input->post('deskripsi'),
-				'tgl_surat' => $this->input->post('tgl_surat'),
+				'tanggal' => $this->input->post('tgl_surat'),
 				'tgl_keluar' => $this->input->post('tgl_keluar'),
 
 			);
@@ -511,7 +417,7 @@ class Admin extends CI_Controller {
 					'pengirim' => $this->input->post('pengirim'),
 					'no_surat' => $this->input->post('no_surat'),
 					'deskripsi' => $this->input->post('deskripsi'),
-					'tgl_surat' => $this->input->post('tgl_surat'),
+					'tanggal' => $this->input->post('tgl_surat'),
 					'tgl_keluar' => $this->input->post('tgl_keluar'),
 				);
 				$this->m_dah->update_data($where,$data_pd,'surat_keluar');
@@ -960,7 +866,7 @@ function surat_mati(){
 		$this->form_validation->set_rules('nik','Data harus terisi','required');
 		$this->form_validation->set_rules('tanggal','Data harus terisi','required');
 
-		$this->form_validation->set_rules('tgl_lhr','Data harus terisi','required');
+		$this->form_validation->set_rules('umur','Data harus terisi','required');
 		$this->form_validation->set_rules('tgl_meninggal','Data harus terisi','required');
 		$this->form_validation->set_rules('alamat','Data harus terisi','required');
 
@@ -980,7 +886,7 @@ function surat_mati(){
 				'no_kk' => $this->input->post('no_kk'),
 				'nik' => $this->input->post('nik'),
 				'tanggal' => $this->input->post('tanggal'),
-				'tgl_lhr' => $this->input->post('tgl_lhr'),
+				'umur' => $this->input->post('umur'),
 				'tgl_meninggal' => $this->input->post('tgl_meninggal'),
 
 				'alamat' => $this->input->post('alamat'),
@@ -1050,7 +956,7 @@ function surat_mati(){
             $this->form_validation->set_rules('nik','Data harus terisi','required');
             $this->form_validation->set_rules('tanggal','Data harus terisi','required');
 
-            $this->form_validation->set_rules('tgl_lhr','Data harus terisi','required');
+            $this->form_validation->set_rules('umur','Data harus terisi','required');
             $this->form_validation->set_rules('tgl_meninggal','Data harus terisi','required');
             $this->form_validation->set_rules('alamat','Data harus terisi','required');
 
@@ -1073,7 +979,7 @@ function surat_mati(){
                     'no_kk' => $this->input->post('no_kk'),
                     'nik' => $this->input->post('nik'),
                     'tanggal' => $this->input->post('tanggal'),
-                    'tgl_lhr' => $this->input->post('tgl_lhr'),
+                    'umur' => $this->input->post('umur'),
                     'tgl_meninggal' => $this->input->post('tgl_meninggal'),
 
                     'alamat' => $this->input->post('alamat'),
@@ -1548,6 +1454,28 @@ function surat_datang(){
 
 		}
 
+		function surat_masuk_cetak_filter(){
+			$this->load->database();
+            $this->form_validation->set_rules('dari','Data harus terisi','required');
+            $this->form_validation->set_rules('sampai','Data harus terisi','required');
+
+			$dari=$this->input->post('dari');
+			$sampai=$this->input->post('sampai');
+
+			$fdari['dari']=$this->input->post('dari');
+			$fsampai['sampai']=$this->input->post('sampai');
+
+
+			if($this->form_validation->run() != true){
+				redirect(base_url().'admin/surat_masuk');
+			}else{
+				$data['data']=$this->m_dah->cetak_filter($dari,$sampai,'surat_masuk')->result();
+				$this->load->view('admin/cetak/cetak_surat_masuk',$data,$fdari,$fsampai);
+
+			}
+
+		}
+
 		function surat_keluar_cetak(){
 			$this->load->database();
 			$data['data']=$this->m_dah->get_year('surat_keluar','tgl_keluar')->result();
@@ -1556,11 +1484,56 @@ function surat_datang(){
 
 		}
 
+		function surat_keluar_cetak_filter(){
+			$this->load->database();
+            $this->form_validation->set_rules('dari','Data harus terisi','required');
+            $this->form_validation->set_rules('sampai','Data harus terisi','required');
+
+			$dari=$this->input->post('dari');
+			$sampai=$this->input->post('sampai');
+
+			$fdari['dari']=$this->input->post('dari');
+			$fsampai['sampai']=$this->input->post('sampai');
+
+
+			if($this->form_validation->run() != true){
+				redirect(base_url().'admin/surat_keluar');
+			}else{
+				$data['data']=$this->m_dah->cetak_filter($dari,$sampai,'surat_keluar')->result();
+				$this->load->view('admin/cetak/cetak_surat_keluar',$data,$fdari,$fsampai);
+
+			}
+
+		}
+
+		
 		function surat_ket_cetak(){
 			$this->load->database();
 			$data['data']=$this->m_dah->get_year('surat_ket','tanggal')->result();
 
 			$this->load->view('admin/cetak/cetak_surat_ket',$data);
+
+		}
+
+		function surat_ket_cetak_filter(){
+			$this->load->database();
+            $this->form_validation->set_rules('dari','Data harus terisi','required');
+            $this->form_validation->set_rules('sampai','Data harus terisi','required');
+
+			$dari=$this->input->post('dari');
+			$sampai=$this->input->post('sampai');
+
+			$fdari['dari']=$this->input->post('dari');
+			$fsampai['sampai']=$this->input->post('sampai');
+
+
+			if($this->form_validation->run() != true){
+				redirect(base_url().'admin/surat_ket');
+			}else{
+				$data['data']=$this->m_dah->cetak_filter($dari,$sampai,'surat_ket')->result();
+				$this->load->view('admin/cetak/cetak_surat_ket',$data,$fdari,$fsampai);
+
+			}
 
 		}
 
@@ -1573,6 +1546,29 @@ function surat_datang(){
 
 		}
 
+		function surat_sengketa_cetak_filter(){
+			$this->load->database();
+            $this->form_validation->set_rules('dari','Data harus terisi','required');
+            $this->form_validation->set_rules('sampai','Data harus terisi','required');
+
+			$dari=$this->input->post('dari');
+			$sampai=$this->input->post('sampai');
+
+			$fdari['dari']=$this->input->post('dari');
+			$fsampai['sampai']=$this->input->post('sampai');
+
+
+			if($this->form_validation->run() != true){
+				redirect(base_url().'admin/surat_sengketa');
+			}else{
+				$data['data']=$this->m_dah->cetak_filter($dari,$sampai,'surat_sengketa')->result();
+				$this->load->view('admin/cetak/cetak_surat_sengketa',$data,$fdari,$fsampai);
+
+			}
+
+		}
+		
+
 		function surat_mati_cetak(){
 			$this->load->database();
 			$data['data']=$this->m_dah->get_year('surat_mati','tanggal')->result();
@@ -1581,11 +1577,55 @@ function surat_datang(){
 
 		}
 
+		function surat_mati_cetak_filter(){
+			$this->load->database();
+            $this->form_validation->set_rules('dari','Data harus terisi','required');
+            $this->form_validation->set_rules('sampai','Data harus terisi','required');
+
+			$dari=$this->input->post('dari');
+			$sampai=$this->input->post('sampai');
+
+			$fdari['dari']=$this->input->post('dari');
+			$fsampai['sampai']=$this->input->post('sampai');
+
+
+			if($this->form_validation->run() != true){
+				redirect(base_url().'admin/surat_mati');
+			}else{
+				$data['data']=$this->m_dah->cetak_filter($dari,$sampai,'surat_mati')->result();
+				$this->load->view('admin/cetak/cetak_surat_mati',$data,$fdari,$fsampai);
+
+			}
+
+		}
+
 		function surat_pindah_cetak(){
 			$this->load->database();
 			$data['data']=$this->m_dah->get_year('surat_pindah','tanggal')->result();
 
 			$this->load->view('admin/cetak/cetak_surat_pindah',$data);
+
+		}
+
+		function surat_pindah_cetak_filter(){
+			$this->load->database();
+            $this->form_validation->set_rules('dari','Data harus terisi','required');
+            $this->form_validation->set_rules('sampai','Data harus terisi','required');
+
+			$dari=$this->input->post('dari');
+			$sampai=$this->input->post('sampai');
+
+			$fdari['dari']=$this->input->post('dari');
+			$fsampai['sampai']=$this->input->post('sampai');
+
+
+			if($this->form_validation->run() != true){
+				redirect(base_url().'admin/surat_pindah');
+			}else{
+				$data['data']=$this->m_dah->cetak_filter($dari,$sampai,'surat_pindah')->result();
+				$this->load->view('admin/cetak/cetak_surat_pindah',$data,$fdari,$fsampai);
+
+			}
 
 		}
 		
@@ -1597,190 +1637,31 @@ function surat_datang(){
 
 		}
 
+		function surat_datang_cetak_filter(){
+			$this->load->database();
+            $this->form_validation->set_rules('dari','Data harus terisi','required');
+            $this->form_validation->set_rules('sampai','Data harus terisi','required');
+
+			$dari=$this->input->post('dari');
+			$sampai=$this->input->post('sampai');
+
+			$fdari['dari']=$this->input->post('dari');
+			$fsampai['sampai']=$this->input->post('sampai');
 
 
+			if($this->form_validation->run() != true){
+				redirect(base_url().'admin/surat_datang');
+			}else{
+				$data['data']=$this->m_dah->cetak_filter($dari,$sampai,'surat_datang')->result();
+				$this->load->view('admin/cetak/cetak_surat_datang',$data,$fdari,$fsampai);
 
-/*
-|---------------------------------
-|	Bagian tambah data jabatan
-|----------------------------------
-*/
-function jabatan(){
-	$this->load->database();
-	
-	$data['jabatan']=$this->m_dah->get_data_desc('id','jabatan')->result();
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_data_jabatan',$data);
-	$this->load->view('admin/v_footer');
-}
+			}
 
-function jabatan_add(){
-	$this->load->database();
-	$this->form_validation->set_rules('jabatan','jabatan','required');
-	if($this->form_validation->run() != true){
-		$data['jabatan'] = $this->m_dah->get_data('jabatan')->result();
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/data_opsi/v_data_jabatan',$data);
-		$this->load->view('admin/v_footer');
-	}else{
-		$jabatan = $this->input->post('jabatan');
-		$data=array(
-			'jabatan' => $jabatan
-		);
-		$this->m_dah->insert_data($data,'jabatan');
-		redirect(base_url().'admin/jabatan?alert=add');
-	}
-
-}
-
-function jabatan_edit($id){
-	$this->load->database();
-
-	if($id == ""){
-		// redirect('admin/jabatan');
-	}else{			
-		$where = array(
-			'id' => $id
-			);	
-		$data['edit'] = $this->m_dah->edit_data($where,'jabatan')->result();
-		$data['jabatan']=$this->m_dah->get_data('jabatan')->result();
-
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/data_opsi/v_edit_jabatan',$data);
-		$this->load->view('admin/v_footer');
-	}
-	
-}
-function jabatan_update(){
-	$this->load->database();
-	$id = $this->input->post('id');
-	$this->form_validation->set_rules('jabatan','jabatan','required');
-	if($this->form_validation->run() != true){
-		$where = array(
-			'id' => $id
-			);	
-		$data['edit'] = $this->m_dah->edit_data($where,'jabatan')->result();
-		$data['jabatan'] = $this->m_dah->get_data('jabatan')->result();
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/data_opsi/v_edit_jabatan',$data);
-		$this->load->view('admin/v_footer');
-	}else{			
-		$jabatan = $this->input->post('jabatan');
-		$data = array(
-			'jabatan' => $jabatan
-			);
-		
-		$w = array(
-			'id' => $id
-			);
-		$this->m_dah->update_data($w,$data,'jabatan');
-		redirect(base_url().'admin/jabatan/?alert=update');
-	}	
-	
-}
-
-function jabatan_delete($id){
-	$this->load->database();
-	if($id == ""){
-		redirect('admin/jabatan');
-	}else{
-		$wt = array(
-			'id' => $id
-			);
-		$this->m_dah->delete_data($wt,'jabatan');
-		
-		redirect('admin/jabatan/?alert=delete');
-	}
-}
-
-/*
-|---------------------------------
-|	Bagian tambah data struktur Jabatan gampong
-|----------------------------------
-*/
-function struktur_jabatan(){
-	$this->load->database();
-	$where=array(
-		'jabatan_status' => 1
-	);
-	// $data['user']=$this->m_dah->get_data('user')->result();
-	$data['penduduk']=$this->m_dah->get_data('penduduk')->result();
-	$data['jabatan']=$this->m_dah->get_data('jabatan')->result();
-
-	$data['pejabat']=$this->m_dah->edit_data($where,'user')->result();
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/v_struktur_jab_data',$data);
-	$this->load->view('admin/v_footer');
-}
-
-function struktur_jab_add(){
-	$this->load->database();
-	$this->form_validation->set_rules('id_penduduk','Nomor Penduduk','required');
-	$this->form_validation->set_rules('jabatan','Jabatan','required');
-	
-	if($this->form_validation->run() != true){
-		$where=array(
-			'jabatan_status' => 1
-		);
-		$data['penduduk']=$this->m_dah->get_data('penduduk')->result();
-		$data['jabatan']=$this->m_dah->get_data('jabatan')->result();
-		$data['pejabat']=$this->m_dah->edit_data($where,'user')->result();
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/v_struktur_jab_data',$data);
-		$this->load->view('admin/v_footer');
-	}else{
-		$jabatan = $this->input->post('jabatan');
-		$w=array(
-			'penduduk_id' => $this->input->post('id_penduduk')
-		);
-		
-
-		if($jabatan == 1){
-			$data=array(
-			'jabatan' => $jabatan,
-			'jabatan_status' => 1,
-			'user_lvl' => 'lurah'
-			);
-			$this->m_dah->update_data($w,$data,'user');
-
-		}elseif($jabatan == 2){
-			$data=array(
-			'jabatan' => $jabatan,
-			'jabatan_status' => 1,
-			'user_lvl' => 'admin'
-			);
-			$this->m_dah->update_data($w,$data,'user');
-
-		}else{
-			$data=array(
-			'jabatan' => $jabatan,
-			'jabatan_status' => 1
-			);
-			$this->m_dah->update_data($w,$data,'user');
 		}
 
-		redirect(base_url().'admin/struktur_jabatan?alert=add');
-	}
 
-}
 
-function struktur_jab_delete($id){
-	$this->load->database();
-	if($id == ""){
-		redirect('admin/struktur_jabatan');
-	}else{
-		$w=array(
-			'penduduk_id' =>$id
-		);
-		$data=array(
-			'jabatan' => 0,
-			'jabatan_status' => 0,
-			'user_lvl' => "rakyat"
-		);
-		$this->m_dah->update_data($w,$data,'user');
-		redirect('admin/struktur_jabatan/?alert=delete');
-	}
-}
+
 /*
 |---------------------------------
 |	Bagian tambah data penduduk
@@ -1792,197 +1673,7 @@ function struktur_jab_delete($id){
 		echo $this->m_dah->edit_data(array('nik' => $val),'penduduk')->num_rows();
 	}
 
-	function penduduk(){
-		$this->load->database();
-
-		$data['penduduk']=$this->m_dah->get_data('penduduk')->result();
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/v_data_penduduk',$data);
-		$this->load->view('admin/v_footer');
-
-	}
-
 	
-	function penduduk_add(){
-		$this->load->database();
-		$data['agama']=$this->m_dah->get_data('agama')->result();
-		$data['pendidikan']=$this->m_dah->get_data('pendidikan')->result();
-		$data['pekerjaan']=$this->m_dah->get_data('pekerjaan')->result();
-		
-		
-		$this->load->view('admin/v_header');
-		$this->load->view('admin/v_penduduk_add',$data);
-		$this->load->view('admin/v_footer');
-
-	}
-
-
-	function penduduk_act(){
-		$this->load->database();
-
-		$this->form_validation->set_rules('nik','Nomor Induk Kependudukan','required|is_unique[penduduk.nik]|max_length[16]|min_length[16]');
-		$this->form_validation->set_rules('no_kk','Nomor Kartu Keluarga','required|max_length[16]|min_length[16]');
-		$this->form_validation->set_rules('nama','Nama','required');
-		
-		if($this->form_validation->run() != true){
-				$data['agama']=$this->m_dah->get_data('agama')->result();
-				$data['pendidikan']=$this->m_dah->get_data('pendidikan')->result();
-				$data['pekerjaan']=$this->m_dah->get_data('pekerjaan')->result();
-				$this->load->view('admin/v_header');
-				$this->load->view('admin/v_penduduk_add',$data);
-				$this->load->view('admin/v_footer');
-			// redirect(base_url().'admin/penduduk_add');
-		}else{
-		
-			$data_pd=array(
-				'nik' => $this->input->post('nik'),
-				'nama' => $this->input->post('nama'),
-				'nomor_kk' => $this->input->post('no_kk'),
-				'tempat_lahir' => $this->input->post('tmpt_lhr'),
-				'tgl_lahir' => $this->input->post('tgl_lhr'),
-				'jenis_kelamin' => $this->input->post('jk'),
-				'agama' => $this->input->post('agama'),
-				'status_warga_negara' => $this->input->post('warga_negara'),
-				'nama_ayah' => $this->input->post('nama_ayah'),
-				'nama_ibu' => $this->input->post('nama_ibu'),
-				'gol_darah' => $this->input->post('gol_darah'),
-				'no_hp' => $this->input->post('no_hp'),
-				'pendidikan' => $this->input->post('pendidikan'),
-				'pekerjaan' => $this->input->post('pekerjaan'),
-				'status_nikah' => $this->input->post('status_nikah'),
-				'status_hub_keluarga' => $this->input->post('status_hub_keluarga'),
-				'alamat' => $this->input->post('alamat')
-
-			);
-			$this->m_dah->insert_data($data_pd,'penduduk');
-
-			$id_terakhir = $this->db->insert_id();
-			$data_user=array(
-				'penduduk_id' => $id_terakhir,
-				'user_login' => $this->input->post('nik'),
-				'user_pass' => md5($this->input->post('nik')),
-				'user_name' => $this->input->post('nama'),
-				'user_status' => 1,
-				'user_lvl' => "rakyat"
-			);
-
-			$this->m_dah->insert_data($data_user,'user');
-			redirect(base_url().'admin/penduduk/?alert=add');
-
-		}
-	}
-	function penduduk_view($id){
-		$this->load->database();
-		if($id == ""){
-			redirect(base_url().'admin/penduduk');
-		}else{
-			$where=array(
-				'id'=> $id
-			);
-			$data['penduduk'] = $this->m_dah->edit_data($where,'penduduk')->result();
-			$this->load->view('admin/v_header');
-			$this->load->view('admin/v_penduduk_view',$data);
-			$this->load->view('admin/v_footer');
-		}
-		
-	}
-
-	function penduduk_edit($id){
-		$this->load->database();
-
-		if($id == ""){
-			redirect(base_url().'admin/penduduk');
-		}else{
-			$where=array(
-				'id'=> $id
-			);
-			$data['agama']=$this->m_dah->get_data('agama')->result();
-			$data['pendidikan']=$this->m_dah->get_data('pendidikan')->result();
-			$data['pekerjaan']=$this->m_dah->get_data('pekerjaan')->result();
-			$data['penduduk'] = $this->m_dah->edit_data($where,'penduduk')->result();
-			$this->load->view('admin/v_header');
-			$this->load->view('admin/v_penduduk_edit',$data);
-			$this->load->view('admin/v_footer');
-		}
-	}
-	function penduduk_update(){
-		$this->load->database();		
-
-		$id = $this->input->post('id');
-		
-		$this->form_validation->set_rules('nama','Nama','required');
-		$this->form_validation->set_rules('nik','Nomor Induk Kependudukan','required|edit_unique[penduduk.nik.'.$id.']|max_length[16]|min_length[16]');
-		$this->form_validation->set_rules('no_kk','Nomor Kartu Keluarga','required|max_length[16]|min_length[16]');
-		if($this->form_validation->run() != true){
-			$where = array(
-				'id' => $id
-				);				
-				$data['agama']=$this->m_dah->get_data('agama')->result();
-				$data['pendidikan']=$this->m_dah->get_data('pendidikan')->result();
-				$data['pekerjaan']=$this->m_dah->get_data('pekerjaan')->result();
-				$data['penduduk'] = $this->m_dah->edit_data($where,'penduduk')->result();
-
-				$this->load->view('admin/v_header');
-				$this->load->view('admin/v_penduduk_edit',$data);
-				$this->load->view('admin/v_footer');
-			// redirect(base_url().'admin/penduduk_add');
-		}else{
-			$where = array(
-				'id' => $id
-				);	
-
-			$data=array(
-				'nik' => $this->input->post('nik'),
-				'nama' => $this->input->post('nama'),
-				'nomor_kk' => $this->input->post('no_kk'),
-				'tempat_lahir' => $this->input->post('tmpt_lhr'),
-				'tgl_lahir' => $this->input->post('tgl_lhr'),
-				'jenis_kelamin' => $this->input->post('jk'),
-				'agama' => $this->input->post('agama'),
-				'status_warga_negara' => $this->input->post('warga_negara'),
-				'nama_ayah' => $this->input->post('nama_ayah'),
-				'nama_ibu' => $this->input->post('nama_ibu'),
-				'gol_darah' => $this->input->post('gol_darah'),
-				'no_hp' => $this->input->post('no_hp'),
-				'pendidikan' => $this->input->post('pendidikan'),
-				'pekerjaan' => $this->input->post('pekerjaan'),
-				'status_nikah' => $this->input->post('status_nikah'),
-				'status_hub_keluarga' => $this->input->post('status_hub_keluarga'),
-				'alamat' => $this->input->post('alamat')
-
-			);
-
-			$where_user = array(
-				'penduduk_id' => $id
-				);
-			$data_user=array(
-				'user_name'=> $this->input->post('nama')
-			);
-			$this->m_dah->update_data($where_user,$data_user,'user');
-
-			$this->m_dah->update_data($where,$data,'penduduk');
-			redirect(base_url().'admin/penduduk/?alert=update');
-
-		}
-	}
-	function penduduk_delete($id){
-		$this->load->database();
-		if($id == ""){
-			redirect(base_url().'admin/penduduk');
-		}else{
-			$wt = array(
-				'id' => $id
-			);
-			$wp = array(
-				'penduduk_id' => $id
-				);
-			$this->m_dah->delete_data($wt,'penduduk');
-			$this->m_dah->delete_data($wp,'user');
-			
-			redirect(base_url().'admin/penduduk/?alert=delete');
-		}	
-	}
-
 
 	// end
 
@@ -2074,70 +1765,46 @@ function struktur_jab_delete($id){
 		}
 	}
 
-/*
-|---------------------------------
-|	Bagian Umum
-|----------------------------------
-*/
-function umum(){
-	$this->load->database();
-	// $this->db->group_by('nomor_kk');
-	// $data['total']= $this->db->count_all('penduduk');
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_umum',$data);
-	$this->load->view('admin/v_footer');
 
-}
-
-function umum_edit(){
-	$this->load->database();
-
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_umum_edit');
-	$this->load->view('admin/v_footer');
-
-}
-
-function umum_update(){
-	$this->load->database();
-	$umum=$this->input->post('umum');
-	$this->m_dah->update_data(array('option_name' => 'umum'),array('option_value' => $umum),'dah_options');
-
-	redirect(base_url().'admin/umum/?alert=update');
-
-}
 /*
 |---------------------------------
 |	Bagian Organisasi
 |----------------------------------
 */
-
-function struktur_organisasi(){
-	$this->load->database();
-
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_struktur_organisasi');
-	$this->load->view('admin/v_footer');
-
-}
-
-function struktur_edit(){
-	$this->load->database();
-
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_struktur_edit');
-	$this->load->view('admin/v_footer');
-
-}
-
-function struktur_update(){
-	$this->load->database();
-	$struktur=$this->input->post('struktur');
-	$this->m_dah->update_data(array('option_name' => 'struktur'),array('option_value' => $struktur),'dah_options');
-
-	redirect(base_url().'admin/struktur_organisasi/?alert=update');
-
-}
+function user_update(){
+		$this->load->database();		
+		$id = $this->input->post('id');
+		$this->form_validation->set_rules('user_login','Username','required');
+		if($this->form_validation->run() == false){
+			$where = array(
+				'user_id' => $id
+				);				
+			$data['user'] = $this->m_dah->edit_data($where,'user')->result();			
+			$this->load->view('admin/v_header');
+			$this->load->view('admin/v_users_edit',$data);
+			$this->load->view('admin/v_footer');
+		}else{			
+			$password = $this->input->post('password');
+			$where = array(
+				'user_id' => $id
+				);
+			if($password != ""){
+				$data = array(
+					'user_login' => $this->input->post('user_login'),
+					'user_email' => $this->input->post('email'),
+					'user_pass' => md5($password)
+					);				
+			}else{
+				$data = array(
+					'user_login' => $this->input->post('user_login'),
+					'user_email' => $this->input->post('email')
+				
+					);		
+			}			
+			$this->m_dah->update_data($where,$data,'user');			
+			redirect('admin/user_edit/'.$id.'/?alert=user-update');	
+		}				
+	}
 
 
 /*
@@ -2146,83 +1813,9 @@ function struktur_update(){
 |----------------------------------
 */
 
-function developer(){
-	$this->load->database();
-
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_pengembang');
-	$this->load->view('admin/v_footer');
-
-}
-
-function developer_edit(){
-	$this->load->database();
-
-	$this->load->view('admin/v_header');
-	$this->load->view('admin/data_opsi/v_pengembang_edit');
-	$this->load->view('admin/v_footer');
-
-}
-
-function developer_update(){
-	$this->load->database();
-	$developer=$this->input->post('developer');
-	
-
-		$config['upload_path'] = './upload/foto/';
-		$config['allowed_types'] = 'jpg|png|jpeg';
-		$foto = "foto_dev";
-		if($_FILES["foto_dev"]["name"]){
-			$rand1=rand(1000,9999);
-			$config['file_name'] = $rand1.'_'.$_FILES['foto_dev']['name'];				
-			$this->load->library('upload', $config);
-			$foto_dev = $this->upload->do_upload('foto_dev');
-			if (!$foto_dev){
-				$error = array('error' => $this->upload->display_errors());
-			}else{
-				$foto_dev = $this->upload->data("file_name");
-				$data = array('upload_data' => $this->upload->data());
-				$this->m_dah->update_data(array('option_name' => 'foto_dev'),array('option_value' => $foto_dev),'dah_options');			
-			}
-		
-		}
-
-	$this->m_dah->update_data(array('option_name' => 'pengembang'),array('option_value' => $developer),'dah_options');
-
-	redirect(base_url().'admin/developer/?alert=update');
-
-}
-
-function hapus_foto_dev(){
-	$this->load->database();
-		$id = $this->input->post('id');
-		$where = array(
-			'option_id' => $id
-			);
-		$data = $this->m_dah->edit_data($where,'dah_options')->row();
-		@chmod("./upload/foto/" . $data->option_value, 0777);
-		@unlink('./upload/foto/' . $data->option_value);
-
-		$update = array(
-			'option_value' => ""
-			);
-		$this->m_dah->update_data($where,$update,'dah_options');
-}
 
 
 
-
-/*
-|---------------------------------
-|	Bagian Surat Admin
-|----------------------------------
-*/
-
-/*
-|---------------------------------
-|	Bagian Surat rakyat
-|----------------------------------
-*/
 
 
 /*--------------------------

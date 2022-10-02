@@ -18,7 +18,7 @@
                             <div class="col-lg-12">
                                 <table class="table">
                                 <tr>
-                                    <td>Pengirim</td>
+                                    <td>Tujuan</td>
                                     <td><?php echo $dt->pengirim?></td>
                                 </tr>
 
@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>Tanggal Surat</td>
                                     <td>
-                                        <?php echo date('Y-m-d',strtotime($dt->tgl_surat))?>
+                                        <?php echo date('Y-m-d',strtotime($dt->tanggal))?>
                                     </td>
                                 </tr>
 
