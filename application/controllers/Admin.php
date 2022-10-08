@@ -171,7 +171,7 @@ class Admin extends CI_Controller {
 				'deskripsi' => $this->input->post('deskripsi'),
 				'tanggal' => $this->input->post('tgl_surat'),
 				'tgl_masuk' => $this->input->post('tgl_masuk'),
-
+				'status' => 1
 			);
 			$this->m_dah->insert_data($data_pd,'surat_masuk');
 			$id_terakhir = $this->db->insert_id();
@@ -342,7 +342,7 @@ class Admin extends CI_Controller {
 				'deskripsi' => $this->input->post('deskripsi'),
 				'tanggal' => $this->input->post('tgl_surat'),
 				'tgl_keluar' => $this->input->post('tgl_keluar'),
-
+				'status' => 1
 			);
 			$this->m_dah->insert_data($data_pd,'surat_keluar');
 			$id_terakhir = $this->db->insert_id();
@@ -519,7 +519,8 @@ class Admin extends CI_Controller {
 				'keperluan' => $this->input->post('keperluan'),
 				'tanggal' => $this->input->post('tanggal'),
 				'alamat' => $this->input->post('alamat'),
-				'jenis_surat' => $this->input->post('jenis_surat')
+				'jenis_surat' => $this->input->post('jenis_surat'),
+				'status' => 1
 
 			);
 			$this->m_dah->insert_data($data_pd,'surat_ket');
@@ -697,7 +698,8 @@ function surat_sengketa(){
 				'keperluan' => $this->input->post('keperluan'),
 				'tanggal' => $this->input->post('tanggal'),
 				'alamat' => $this->input->post('alamat'),
-				'jenis_surat' => $this->input->post('jenis_surat')
+				'jenis_surat' => $this->input->post('jenis_surat'),
+				'status' => 1
 
 			);
 			$this->m_dah->insert_data($data_pd,'surat_sengketa');
@@ -890,7 +892,8 @@ function surat_mati(){
 				'tgl_meninggal' => $this->input->post('tgl_meninggal'),
 
 				'alamat' => $this->input->post('alamat'),
-				'pelapor' => $this->input->post('pelapor')
+				'pelapor' => $this->input->post('pelapor'),
+				'status' => 1
 
 			);
 			$this->m_dah->insert_data($data_pd,'surat_mati');
@@ -1092,6 +1095,7 @@ function surat_pindah(){
 				'kecamatan' => $this->input->post('kecamatan'),
 				'kabupaten' => $this->input->post('kabupaten'),
 				'provinsi' => $this->input->post('provinsi'),
+				'status' => 1
 
 			);
 			$this->m_dah->insert_data($data_pd,'surat_pindah');

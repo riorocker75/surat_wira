@@ -356,16 +356,16 @@ function dusun_total($dusun){
 	return $this->db->query("select *from penduduk where dusun='$dusun' ");
 }
 
-function tot_surat($table,$status){
+function tot_surat($table,$status_kel){
 	return $this->db->query("select *from $table where status='$status_kel' ");
 }
 
 function tot_surat_masuk($status){
-	return $this->db->query("select *from surat_masuk where status='$status_kel' ");
+	return $this->db->query("select *from surat_masuk where status='$status' ");
 }
 
 function tot_surat_keluar($status){
-	return $this->db->query("select *from surat_keluar where status='$status_kel' ");
+	return $this->db->query("select *from surat_keluar where status='$status' ");
 }
 
 function dusun_total_jk($dusun,$status){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2022 at 10:33 AM
+-- Generation Time: Oct 08, 2022 at 11:12 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -251,7 +251,7 @@ CREATE TABLE `surat_keluar` (
 --
 
 INSERT INTO `surat_keluar` (`id`, `pengirim`, `no_surat`, `tanggal`, `tgl_keluar`, `lampiran`, `deskripsi`, `status`) VALUES
-(2, 'dnasjdnajs', 'asdasd', '2022-04-24', '2022-04-24', '3906_fdf.PNG', 'dasdasd', '');
+(2, 'dnasjdnajs', 'asdasd', '2022-04-24', '2022-04-24', '3906_fdf.PNG', 'dasdasd', '1');
 
 -- --------------------------------------------------------
 
@@ -276,7 +276,7 @@ CREATE TABLE `surat_ket` (
 --
 
 INSERT INTO `surat_ket` (`id`, `jenis_surat`, `no_surat`, `pemohon`, `keperluan`, `tanggal`, `alamat`, `lampiran`, `status`) VALUES
-(2, 'sdasd', '12312', 'asdasd', 'adsdas', '2022-04-24', 'asdas', '2560_ax.jpg', '');
+(2, 'sdasd', '12312', 'asdasd', 'adsdas', '2022-04-24', 'asdas', '2560_ax.jpg', '1');
 
 -- --------------------------------------------------------
 
@@ -300,7 +300,7 @@ CREATE TABLE `surat_masuk` (
 --
 
 INSERT INTO `surat_masuk` (`id`, `pengirim`, `no_surat`, `tanggal`, `tgl_masuk`, `lampiran`, `deskripsi`, `status`) VALUES
-(4, 'Kementrian Pendidikan', '8818772hh', '2022-04-24', '2022-04-24', '3491_MAINTENANCE-1170x1034.png', 'asdas', '');
+(4, 'Kementrian Pendidikan', '8818772hh', '2022-04-24', '2022-04-24', '3491_MAINTENANCE-1170x1034.png', 'asdas', '1');
 
 -- --------------------------------------------------------
 
@@ -318,6 +318,7 @@ CREATE TABLE `surat_mati` (
   `nik` text NOT NULL,
   `tanggal` date NOT NULL,
   `tgl_lhr` text NOT NULL,
+  `umur` text NOT NULL,
   `tgl_meninggal` text NOT NULL,
   `alamat` text NOT NULL,
   `pelapor` text NOT NULL,
@@ -329,8 +330,9 @@ CREATE TABLE `surat_mati` (
 -- Dumping data for table `surat_mati`
 --
 
-INSERT INTO `surat_mati` (`id`, `no_surat`, `nama_kepala`, `nama_meninggal`, `jenis_kelamin`, `no_kk`, `nik`, `tanggal`, `tgl_lhr`, `tgl_meninggal`, `alamat`, `pelapor`, `lampiran`, `status`) VALUES
-(2, 'dasd', 'asdasdasda', 'asdas', 'pria', '123123', 'sdfsdf', '2022-04-24', '2022-04-24', '2022-04-24', 'asdasd', 'asdas', '5825_ax.jpg', '');
+INSERT INTO `surat_mati` (`id`, `no_surat`, `nama_kepala`, `nama_meninggal`, `jenis_kelamin`, `no_kk`, `nik`, `tanggal`, `tgl_lhr`, `umur`, `tgl_meninggal`, `alamat`, `pelapor`, `lampiran`, `status`) VALUES
+(2, 'dasd', 'asdasdasda', 'asdas', 'pria', '123123', 'sdfsdf', '2022-04-24', '2022-04-24', '', '2022-04-24', 'asdasd', 'asdas', '5825_ax.jpg', '1'),
+(3, '5452/988/as', 'asdjajsd', 'asdasd', 'pria', '123123123', '12312', '2022-10-09', '', '212', '2022-10-09', 'Bonjour', 'mncnnbc', '', '1');
 
 -- --------------------------------------------------------
 
@@ -382,7 +384,7 @@ CREATE TABLE `surat_pindah` (
 --
 
 INSERT INTO `surat_pindah` (`id`, `no_surat`, `tanggal`, `nama_pindah`, `nama_kepala`, `no_kk`, `nik`, `daerah_tujuan`, `kecamatan`, `kabupaten`, `provinsi`, `lampiran`, `status`) VALUES
-(2, 'dasdasd123123', '2022-04-24', 'asdasd', 'Sumanto', '123123', '123123', 'asdasdasd', 'asd', 'asd', 'asd', '5072_bookcov.png', '');
+(2, 'dasdasd123123', '2022-04-24', 'asdasd', 'Sumanto', '123123', '123123', 'asdasdasd', 'asd', 'asd', 'asd', '5072_bookcov.png', '1');
 
 -- --------------------------------------------------------
 
@@ -407,7 +409,7 @@ CREATE TABLE `surat_sengketa` (
 --
 
 INSERT INTO `surat_sengketa` (`id`, `jenis_surat`, `no_surat`, `pemohon`, `keperluan`, `tanggal`, `alamat`, `lampiran`, `status`) VALUES
-(2, 'qwejqwej', '123', 'dasd', 'adsd', '2022-04-24', 'asdasd', '6162_fffg.PNG', 0);
+(2, 'qwejqwej', '123', 'dasd', 'adsd', '2022-04-24', 'asdasd', '6162_fffg.PNG', 1);
 
 -- --------------------------------------------------------
 
@@ -594,7 +596,7 @@ ALTER TABLE `surat_masuk`
 -- AUTO_INCREMENT for table `surat_mati`
 --
 ALTER TABLE `surat_mati`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `surat_mohon`
